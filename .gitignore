@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+db.json
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node.js (if used in future)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Project specific
+stitch_downloads/
+.temp/
+dist/
+build/

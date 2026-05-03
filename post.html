@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Configuring a Spring Boot Project | CORNDEVs</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#0b1326",
+                        "surface": "#0b1326",
+                        "surface-dim": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6",
+                        "outline": "#8c909f",
+                        "outline-variant": "#424754",
+                        "primary": "#adc6ff",
+                        "on-primary": "#002e6a",
+                        "primary-container": "#4d8eff",
+                        "on-primary-container": "#00285d",
+                        "secondary": "#c0c1ff",
+                        "tertiary": "#ffb786",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        mono: ["monospace"],
+                        label: ["Space Grotesk", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+        }
+        .label-text {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        pre {
+            background-color: #131b2e;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #424754;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: #c2c6d6;
+        }
+        code {
+            font-family: monospace;
+            background-color: #171f33;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #dae2fd;
+            border-bottom: 1px solid #424754;
+            padding-bottom: 0.5rem;
+        }
+        p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            color: #c2c6d6;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-outline-variant">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+                        <span class="text-on-primary font-bold text-xl">C</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-on-surface">CORNDEVs</span>
+                </a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">search</span>
+                </button>
+                <a href="index.html" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Về Trang chủ</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-grow flex flex-col md:flex-row max-w-5xl mx-auto w-full px-6 py-12 gap-12">
+        <!-- Sidebar -->
+        <aside class="hidden md:block w-64 shrink-0">
+            <div class="sticky top-28 space-y-8">
+                <nav class="space-y-4">
+                    <h4 class="label-text text-[10px] font-bold text-on-surface-variant">Trong bài này</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#initialization" class="text-primary font-medium">1. Khởi tạo</a></li>
+                        <li><a href="#configuration" class="text-on-surface-variant hover:text-on-surface transition-colors">2. Cấu hình</a></li>
+                        <li><a href="#security" class="text-on-surface-variant hover:text-on-surface transition-colors">3. Bảo mật</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant space-y-4">
+                    <h4 class="label-text text-[10px] font-bold text-on-surface">Mẹo nhanh</h4>
+                    <p class="text-xs text-on-surface-variant m-0">Sử dụng <code>@ConfigurationProperties</code> thay vì <code>@Value</code> để quản lý cấu hình tốt hơn.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow max-w-2xl">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center gap-2 text-xs font-label text-on-surface-variant mb-8 uppercase tracking-widest">
+                <a href="#" class="hover:text-primary transition-colors">Frameworks</a>
+                <span class="material-symbols-outlined text-xs">chevron_right</span>
+                <a href="#" class="hover:text-primary transition-colors">Spring Boot</a>
+            </nav>
+
+            <header class="mb-12">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-sm border border-primary/30 uppercase tracking-widest">Hướng dẫn</span>
+                    <span class="text-on-surface-variant text-xs">03 tháng 5, 2026 • 15 phút đọc</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-on-surface mb-6 leading-tight">Configuring a Spring Boot Project</h1>
+                <p class="text-lg text-on-surface-variant leading-relaxed">
+                    A definitive guide to structuring, initializing, and securing a production-ready Spring Boot application.
+                </p>
+            </header>
+
+            <article class="prose prose-invert max-w-none">
+                <section id="initialization">
+                    <h2>1. Initialization</h2>
+                    <p>The journey begins at <code>start.spring.io</code>, but the real engineering happens in how you structure your initial POM or Gradle build file. For modern microservices, favoring minimal dependencies and explicit version management via a BOM (Bill of Materials) is crucial.</p>
+                    <pre><code>&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+            &lt;version&gt;${spring-cloud.version}&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;</code></pre>
+                </section>
+
+                <section id="configuration">
+                    <h2>2. Configuration</h2>
+                    <p>Configuration should be externalized. Using <code>application.yml</code> is preferred over <code>.properties</code> for hierarchical clarity. For environment-specific values, use profiles (e.g., <code>application-dev.yml</code>).</p>
+                    <p>Always validate your properties using <code>@Validated</code> to catch configuration errors at startup rather than runtime.</p>
+                </section>
+
+                <section id="security">
+                    <h2>3. Security Context</h2>
+                    <p>Security is not an afterthought. In Spring Boot 3.x, the <code>SecurityFilterChain</code> bean is the standard way to configure HTTP security.</p>
+                    <pre><code>@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/api/public/**").permitAll()
+            .anyRequest().authenticated()
+        )
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    return http.build();
+}</code></pre>
+                </section>
+            </article>
+
+            <footer class="mt-16 pt-8 border-t border-outline-variant flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-surface-bright flex items-center justify-center font-bold">C</div>
+                    <div>
+                        <div class="text-sm font-bold text-on-surface">Ban quản trị CornDev</div>
+                        <div class="text-xs text-on-surface-variant">Kỹ sư Backend & Người viết kỹ thuật</div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 technical-border rounded-lg hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined text-lg">share</span>
+                    </button>
+                    <button class="p-2 technical-border rounded-lg hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined text-lg">bookmark</span>
+                    </button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+
+</body>
+</html>

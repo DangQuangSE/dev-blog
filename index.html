@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>CORNDEVs | Personal Tech Knowledge Base</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#0b1326",
+                        "surface": "#0b1326",
+                        "surface-dim": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6",
+                        "outline": "#8c909f",
+                        "outline-variant": "#424754",
+                        "primary": "#adc6ff",
+                        "on-primary": "#002e6a",
+                        "primary-container": "#4d8eff",
+                        "on-primary-container": "#00285d",
+                        "secondary": "#c0c1ff",
+                        "tertiary": "#ffb786",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        mono: ["monospace"],
+                        label: ["Space Grotesk", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "sm": "0.125rem",
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .technical-border {
+            border: 1px solid #424754;
+        }
+        .technical-border-hover:hover {
+            border-color: #adc6ff;
+            transition: border-color 0.3s ease;
+        }
+        .label-text {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060e20;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #424754;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c909f;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-outline-variant">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+                    <span class="text-on-primary font-bold text-xl">C</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-on-surface">CORNDEVs</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Trang chủ</a>
+                <a href="javascript:void(0)" onclick="showView('categories')" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Kiến thức</a>
+                <a href="javascript:void(0)" onclick="showView('recent', 'all')" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Bài viết</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">search</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+
+        <!-- Categories Grid -->
+        <section id="categories" class="py-24 px-6 bg-surface-container-lowest flex-grow">
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Programming Languages -->
+                <div id="languages" class="space-y-6">
+                    <div class="flex items-center justify-between border-b border-outline-variant pb-4">
+                        <h2 class="text-2xl font-bold text-on-surface">Ngôn ngữ</h2>
+                        <span class="material-symbols-outlined text-primary">terminal</span>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        <a href="javascript:void(0)" onclick="filterPosts('java', 'Java')" class="technical-border technical-border-hover p-4 rounded-lg bg-surface-container-low group">
+                            <span class="label-text text-[10px] text-on-surface-variant group-hover:text-primary">01</span>
+                            <h3 class="font-bold text-on-surface mt-1">Java</h3>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div id="frameworks" class="space-y-6">
+                    <div class="flex items-center justify-between border-b border-outline-variant pb-4">
+                        <h2 class="text-2xl font-bold text-on-surface">Frameworks</h2>
+                        <span class="material-symbols-outlined text-secondary">layers</span>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        <a href="javascript:void(0)" onclick="filterPosts('springboot', 'Spring Boot')" class="technical-border technical-border-hover p-4 rounded-lg bg-surface-container-low group">
+                            <span class="label-text text-[10px] text-on-surface-variant group-hover:text-secondary">01</span>
+                            <h3 class="font-bold text-on-surface mt-1">Spring Boot</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Posts -->
+        <section id="recent" class="hidden py-24 px-6 flex-grow">
+            <div class="max-w-5xl mx-auto space-y-12">
+                <div class="flex items-end justify-between">
+                    <div>
+                        <span id="posts-label" class="label-text text-primary text-[10px] font-bold">Mới nhất</span>
+                        <h2 id="posts-title" class="text-3xl font-bold text-on-surface mt-2">Tất cả bài viết</h2>
+                    </div>
+
+                </div>
+
+                <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+                    <!-- Post Card 2 -->
+                    <article data-category="springboot" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>03 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>10 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/frameworks/springboot/02-spring-core-fundamentals.md">Spring Core Essentials: Làm chủ IoC, DI và Bean Lifecycle</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Khám phá các khái niệm nền tảng của Spring: Inversion of Control, Dependency Injection và vòng đời của một Bean trong IoC Container.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post Card 3 -->
+                    <article data-category="springboot" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>03 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>12 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/frameworks/springboot/spring-security/01-idor-and-rbac.md">Bảo mật Spring Boot: Hiểu rõ về IDOR và RBAC</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Tìm hiểu cách phòng chống lỗ hổng IDOR và triển khai cơ chế phân quyền RBAC/ABAC hiệu quả trong ứng dụng Spring Boot.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        function showView(viewId, category = null, categoryName = null) {
+            const categoriesSection = document.getElementById('categories');
+            const recentSection = document.getElementById('recent');
+            const cards = document.querySelectorAll('.post-card');
+            const title = document.getElementById('posts-title');
+            const label = document.getElementById('posts-label');
+            const grid = document.getElementById('posts-grid');
+
+            // Ẩn tất cả với hiệu ứng mờ
+            categoriesSection.style.display = 'none';
+            recentSection.classList.add('hidden');
+
+            if (viewId === 'categories') {
+                categoriesSection.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewId === 'recent') {
+                recentSection.classList.remove('hidden');
+                
+                // Lọc bài viết nếu có category
+                if (category) {
+                    cards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Cập nhật tiêu đề
+                    if (category === 'all') {
+                        title.innerText = 'Tất cả bài viết';
+                        label.innerText = 'Mới nhất';
+                    } else {
+                        title.innerText = 'Bài viết về ' + categoryName;
+                        label.innerText = 'Danh mục';
+                    }
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function filterPosts(category, categoryName) {
+            // Khi nhấn vào category, chuyển sang view 'recent' và lọc
+            showView('recent', category, categoryName);
+        }
+    </script>
+</body>
+</html>
