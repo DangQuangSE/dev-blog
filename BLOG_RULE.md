@@ -62,11 +62,18 @@ When I ask to "Add theory about [topic] to the blog," please follow these rules:
     - **Source code**: Code snippets must be placed in a ` ``` ` block with the language name (e.g., ` ```java `).
     - **Terminology**: Technical terms or function/variable names should be enclosed in backticks `` ` ``.
 
-4.  **Example workflow**:
+4.  **Automatic UI Update**:
+    - Sau khi người dùng xác nhận nội dung file `.md` đã ổn, AI phải tự động cập nhật file `index.html` (hoặc trang danh sách tương ứng).
+    - Tạo một thẻ `<article>` (Post Card) mới với đầy đủ thông tin: `data-category`, tiêu đề, mô tả ngắn, ngày tháng và đường dẫn đến `reader.html?post=[path_to_file]`.
+    - Đảm bảo thẻ mới được đưa lên đầu danh sách bài viết để hiển thị là bài mới nhất.
+
+5.  **Example workflow**:
     - **Me**: "Add a post about JWT Authentication in Spring Security."
     - **AI**: "This post will be added under the path `content/frameworks/springboot/spring-security/`. The filename will be `02-jwt-authentication.md`. Do you agree?"
     - **Me**: "I agree."
-    - **AI**: (Automatically creates the file and waits for my content, or helps me write it).
+    - **AI**: (Tạo file `.md`, viết nội dung và đợi người dùng feedback).
+    - **Me**: "Nội dung rất tốt, hãy xuất bản nó."
+    - **AI**: (Tự động cập nhật thẻ bài viết vào `index.html` và thông báo hoàn tất).
 
 ## 5. Recommended Technologies
 
