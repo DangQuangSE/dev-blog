@@ -157,11 +157,32 @@
                 </div>
 
                 <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+                    <!-- Post Card 1 -->
+                    <article data-category="springboot" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>04 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>8 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/frameworks/springboot/config/01-async-configuration.md">Cấu hình Async và Thread Pool trong Spring Boot</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Hướng dẫn chi tiết cách cấu hình ThreadPoolTaskExecutor để tối ưu hóa xử lý bất đồng bộ và quản lý tài nguyên hiệu quả trong ứng dụng Spring Boot.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
 
                     <!-- Post Card 2 -->
                     <article data-category="springboot" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
-
                         <div class="p-6 space-y-4 flex-grow flex flex-col">
                             <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
                                 <span>03 THÁNG 5, 2026</span>
@@ -186,7 +207,6 @@
 
                     <!-- Post Card 3 -->
                     <article data-category="springboot" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
-
                         <div class="p-6 space-y-4 flex-grow flex flex-col">
                             <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
                                 <span>03 THÁNG 5, 2026</span>
@@ -215,13 +235,36 @@
 
 
     <script>
+        function updateCategoryCounts() {
+            const postCards = document.querySelectorAll('.post-card');
+            const counts = {};
+
+            postCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                counts[category] = (counts[category] || 0) + 1;
+            });
+
+            // Cập nhật giao diện đếm số lượng trong phần Categories Grid
+            const categoryLinks = document.querySelectorAll('[onclick^="filterPosts"]');
+            categoryLinks.forEach(link => {
+                const match = link.getAttribute('onclick').match(/'([^']+)'/);
+                if (match) {
+                    const category = match[1];
+                    const countSpan = link.querySelector('.label-text');
+                    if (countSpan) {
+                        const count = counts[category] || 0;
+                        countSpan.innerText = count < 10 ? '0' + count : count;
+                    }
+                }
+            });
+        }
+
         function showView(viewId, category = null, categoryName = null) {
             const categoriesSection = document.getElementById('categories');
             const recentSection = document.getElementById('recent');
             const cards = document.querySelectorAll('.post-card');
             const title = document.getElementById('posts-title');
             const label = document.getElementById('posts-label');
-            const grid = document.getElementById('posts-grid');
 
             // Ẩn tất cả với hiệu ứng mờ
             categoriesSection.style.display = 'none';
@@ -229,6 +272,7 @@
 
             if (viewId === 'categories') {
                 categoriesSection.style.display = 'block';
+                updateCategoryCounts(); // Cập nhật số lượng mỗi khi vào view kiến thức
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else if (viewId === 'recent') {
                 recentSection.classList.remove('hidden');
@@ -260,6 +304,11 @@
             // Khi nhấn vào category, chuyển sang view 'recent' và lọc
             showView('recent', category, categoryName);
         }
+
+        // Chạy lần đầu khi trang load
+        window.onload = () => {
+            updateCategoryCounts();
+        };
     </script>
 </body>
 </html>
