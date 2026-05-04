@@ -56,7 +56,10 @@ When I ask to "Add theory about [topic] to the blog," please follow these rules:
 
 3.  **Post Content**:
     - Each post must have a clear structure, using Markdown tags (`#`, `##`, `*`, `**`, `` ` ``, ` ``` `).
-    - **Content Refinement**: When I provide the theory, you must review and edit it for better detail and accuracy. The content should be in-depth and practical. If I request it, you should also add relevant code examples and configuration snippets.
+    - **Yêu cầu chuyên sâu**: Mỗi bài viết lý thuyết cần bao gồm:
+        - **Nguồn gốc/Lý do ra đời**: Tại sao công nghệ/khái niệm này xuất hiện? Nó giải quyết vấn đề gì của quá khứ?
+        - **So sánh với cách làm cũ**: Trước khi có nó, lập trình viên đã giải quyết vấn đề đó như thế nào? (Ví dụ: Lập trình thủ tục vs Hướng đối tượng).
+        - **Rủi ro khi không áp dụng**: Nếu không sử dụng hoặc sử dụng sai, hệ thống sẽ gặp phải những vấn đề gì? (Bug, khó mở rộng, tốn tài nguyên...).
     - **Main title**: Use `#` for the post title.
     - **Major sections**: Use `##` for the main sections of the post.
     - **Source code**: Code snippets must be placed in a ` ``` ` block with the language name (e.g., ` ```java `).

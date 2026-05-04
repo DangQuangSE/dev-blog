@@ -102,9 +102,12 @@
             </nav>
 
             <div class="flex items-center gap-4">
-                <button class="p-2 hover:bg-surface-container rounded-full transition-colors">
-                    <span class="material-symbols-outlined text-on-surface-variant">search</span>
-                </button>
+                <div class="relative group">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm group-focus-within:text-primary transition-colors">search</span>
+                    <input type="text" id="search-input" placeholder="Tìm bài viết..." 
+                        class="bg-surface-container border border-outline-variant rounded-full py-2 pl-10 pr-4 text-xs w-40 md:w-48 focus:w-64 focus:outline-none focus:border-primary transition-all duration-300 placeholder:text-outline"
+                        oninput="handleSearch(this.value)">
+                </div>
             </div>
         </div>
     </header>
@@ -157,7 +160,53 @@
                 </div>
 
                 <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Post Card 1 -->
+                    <!-- Post Card: SOLID Principles -->
+                    <article data-category="java" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>04 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>12 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/programming-languages/java/02-nguyen-tac-solid-trong-java.md">Nguyên tắc SOLID trong lập trình hướng đối tượng</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Tiêu chuẩn vàng trong thiết kế phần mềm. 5 nguyên tắc giúp hệ thống linh hoạt, dễ bảo trì và mở rộng một cách bền vững.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post Card: OOP Principles -->
+                    <article data-category="java" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>04 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>15 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/programming-languages/java/01-bon-dac-tinh-oop-trong-java.md">Bốn đặc tính cơ bản của OOP trong Java</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Khám phá 4 cột trụ của OOP: Đóng gói, Kế thừa, Đa hình và Trừu tượng. Tìm hiểu lý do ra đời và cách chúng giải quyết các vấn đề của lập trình thủ tục.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
                     <article data-category="springboot" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
                         <div class="p-6 space-y-4 flex-grow flex flex-col">
                             <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
@@ -235,6 +284,43 @@
 
 
     <script>
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            const cards = document.querySelectorAll('.post-card');
+            const title = document.getElementById('posts-title');
+            const label = document.getElementById('posts-label');
+            const categoriesSection = document.getElementById('categories');
+            const recentSection = document.getElementById('recent');
+
+            // Chuyển sang view danh sách khi bắt đầu tìm kiếm
+            categoriesSection.style.display = 'none';
+            recentSection.classList.remove('hidden');
+
+            let foundCount = 0;
+            cards.forEach(card => {
+                const titleText = card.querySelector('h3').innerText.toLowerCase();
+                const descText = card.querySelector('p').innerText.toLowerCase();
+                const category = card.getAttribute('data-category').toLowerCase();
+                
+                if (titleText.includes(q) || descText.includes(q) || category.includes(q)) {
+                    card.style.display = 'flex';
+                    foundCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Cập nhật tiêu đề hiển thị
+            if (q === "") {
+                title.innerText = 'Tất cả bài viết';
+                label.innerText = 'Mới nhất';
+                // Nếu xóa trắng search, quay về trạng thái mặc định (có thể giữ ở view recent)
+            } else {
+                title.innerText = `Kết quả cho "${query}"`;
+                label.innerText = `Tìm thấy ${foundCount} bài viết`;
+            }
+        }
+
         function updateCategoryCounts() {
             const postCards = document.querySelectorAll('.post-card');
             const counts = {};
