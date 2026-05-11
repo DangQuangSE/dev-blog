@@ -60,6 +60,7 @@ When I ask to "Add theory about [topic] to the blog," please follow these rules:
         - **Nguồn gốc/Lý do ra đời**: Tại sao công nghệ/khái niệm này xuất hiện? Nó giải quyết vấn đề gì của quá khứ?
         - **So sánh với cách làm cũ**: Trước khi có nó, lập trình viên đã giải quyết vấn đề đó như thế nào? (Ví dụ: Lập trình thủ tục vs Hướng đối tượng).
         - **Rủi ro khi không áp dụng**: Nếu không sử dụng hoặc sử dụng sai, hệ thống sẽ gặp phải những vấn đề gì? (Bug, khó mở rộng, tốn tài nguyên...).
+        - **Đối với các lý thuyết liên quan tới DSA**: thì phải chỉ ra thêm luồng hoạt động lưu trữ trong bộ nhớ diễn ra như thế nào và cho ví dụ leetcode cụ thể.
     - **Main title**: Use `#` for the post title.
     - **Major sections**: Use `##` for the main sections of the post.
     - **Source code**: Code snippets must be placed in a ` ``` ` block with the language name (e.g., ` ```java `).
