@@ -117,7 +117,7 @@
 
         <!-- Categories Grid -->
         <section id="categories" class="py-24 px-6 bg-surface-container-lowest flex-grow">
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Programming Languages -->
                 <div id="languages" class="space-y-6">
                     <div class="flex items-center justify-between border-b border-outline-variant pb-4">
@@ -145,6 +145,24 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- DSA -->
+                <div id="dsa" class="space-y-6">
+                    <div class="flex items-center justify-between border-b border-outline-variant pb-4">
+                        <h2 class="text-2xl font-bold text-on-surface">DSA</h2>
+                        <span class="material-symbols-outlined text-tertiary">account_tree</span>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        <a href="javascript:void(0)" onclick="filterPosts('data-structures', 'Cấu trúc dữ liệu')" class="technical-border technical-border-hover p-4 rounded-lg bg-surface-container-low group">
+                            <span class="label-text text-[10px] text-on-surface-variant group-hover:text-tertiary">00</span>
+                            <h3 class="font-bold text-on-surface mt-1">Cấu trúc dữ liệu</h3>
+                        </a>
+                        <a href="javascript:void(0)" onclick="filterPosts('algorithms', 'Giải thuật')" class="technical-border technical-border-hover p-4 rounded-lg bg-surface-container-low group">
+                            <span class="label-text text-[10px] text-on-surface-variant group-hover:text-tertiary">00</span>
+                            <h3 class="font-bold text-on-surface mt-1">Giải thuật</h3>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -160,6 +178,76 @@
                 </div>
 
                 <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Post Card: LinkedList -->
+                    <article data-category="data-structures" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>11 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>12 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/dsa/data-structures/03-danh-sach-lien-ket-linkedlist.md">Danh sách liên kết (LinkedList): Linh hoạt trong lưu trữ</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Khám phá sức mạnh của LinkedList, giải quyết nhược điểm về kích thước cố định của mảng. Học cách đảo ngược danh sách với LeetCode 206.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post Card: Arrays -->
+                    <article data-category="data-structures" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>11 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>10 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/dsa/data-structures/01-mang-array-co-ban.md">Mảng (Array): Cấu trúc dữ liệu cơ bản nhất</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Tìm hiểu về mảng, lý do ra đời và cách tối ưu hóa truy xuất dữ liệu. Ví dụ thực tế với bài toán LeetCode Remove Duplicates.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post Card: HashSet/HashMap -->
+                    <article data-category="data-structures" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
+                        <div class="p-6 space-y-4 flex-grow flex flex-col">
+                            <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-mono">
+                                <span>11 THÁNG 5, 2026</span>
+                                <span>•</span>
+                                <span>15 PHÚT ĐỌC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface leading-tight hover:text-primary transition-colors">
+                                <a href="reader.html?post=content/dsa/data-structures/02-hashset-va-hashmap-trong-java.md">HashSet và HashMap: Sức mạnh của Bảng băm</a>
+                            </h3>
+                            <p class="text-on-surface-variant text-sm line-clamp-3">
+                                Làm chủ kỹ thuật bảng băm để tối ưu tốc độ tìm kiếm từ O(n) xuống O(1). Giải quyết các bài toán LeetCode Two Sum và Contains Duplicate.
+                            </p>
+                            <div class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                    <span class="text-[10px] font-mono text-on-surface-variant uppercase">Admin</span>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant text-lg">bookmark</span>
+                            </div>
+                        </div>
+                    </article>
                     <!-- Post Card: SOLID Principles -->
                     <article data-category="java" class="post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300">
                         <div class="p-6 space-y-4 flex-grow flex flex-col">
