@@ -3,135 +3,135 @@ const BLOG_POSTS = [
     {
         category: "data-engineering",
         date: "2026-06-03",
-        title: "Data Governance và Security trong Data Engineering",
-        path: "content/data-engineering/phase-5-cloud-and-modern/03-data-governance-and-security.md",
-        description: "Bảo vệ dữ liệu với Masking/Hashing PII, phân quyền Column/Row-level security, Data Catalog (Datahub) và Data Lineage nguồn gốc dữ liệu."
+        title: "[00] Lộ trình học: Tổng Quan về Data Engineering",
+        path: "content/data-engineering/00-overview.md",
+        description: "Tìm hiểu vai trò Data Engineer, sự khác biệt cốt lõi với Backend Engineer, và lộ trình chi tiết chuyển ngành từ BE sang DE giúp bạn phỏng vấn thành công."
     },
     {
         category: "data-engineering",
         date: "2026-06-03",
-        title: "Docker và Kubernetes cho Data Pipelines",
-        path: "content/data-engineering/phase-5-cloud-and-modern/02-docker-kubernetes-for-de.md",
-        description: "Container hóa data pipelines, thiết lập môi trường local bằng docker-compose, submit Spark jobs và deploy Airflow trên Kubernetes."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Dịch vụ dữ liệu trên Cloud (AWS/GCP) và Terraform IaC",
-        path: "content/data-engineering/phase-5-cloud-and-modern/01-cloud-platforms-aws-gcp-azure.md",
-        description: "Bản đồ đối chiếu các dịch vụ DE trên AWS, GCP, Azure và cách quản lý tài nguyên hạ tầng khai báo tự động bằng Terraform."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Streaming Data: Xây dựng hệ thống Real-time với Apache Kafka",
-        path: "content/data-engineering/phase-4-big-data/03-apache-kafka-streaming.md",
-        description: "Hiểu rõ Topics, Partitions, Consumer Groups, Offsets, cơ chế phân phối tin nhắn và ứng dụng trong các streaming pipelines."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Xử lý dữ liệu lớn ở quy mô lớn với Apache Spark",
-        path: "content/data-engineering/phase-4-big-data/02-apache-spark.md",
-        description: "Tìm hiểu RDD, DataFrames, Lazy Evaluation, tối ưu hóa Spark Catalyst, kỹ thuật Partitioning và thực hành viết PySpark job."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Khái niệm Hệ thống phân tán cho Data Engineer",
-        path: "content/data-engineering/phase-4-big-data/01-distributed-computing-concepts.md",
-        description: "Nền tảng Big Data: MapReduce, kỹ thuật Partitioning & Sharding, định lý CAP, định dạng Serialization (Avro, Parquet) và Cluster management."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Data Quality & Monitoring trong Data Pipeline",
-        path: "content/data-engineering/phase-3-pipelines/04-data-quality.md",
-        description: "Ngăn ngừa \"rác vào, rác ra\" (GIGO) bằng Data Contracts, dbt tests, và framework kiểm định chất lượng dữ liệu Great Expectations."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Biến đổi dữ liệu thông minh với dbt (Data Build Tool)",
-        path: "content/data-engineering/phase-3-pipelines/03-dbt-data-build-tool.md",
-        description: "Làm chủ dbt - tiêu chuẩn công nghiệp cho Analytics Engineering: Viết SQL models, snapshots lịch sử, macros tái sử dụng và testing tự động."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Orchestration toàn tập với Apache Airflow",
-        path: "content/data-engineering/phase-3-pipelines/02-apache-airflow.md",
-        description: "Hướng dẫn xây dựng và điều phối data workflow bằng Python: Định nghĩa DAGs, Tasks, truyền tham số XCom và cơ chế retry tự động."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Tư duy thiết kế Pipeline: ETL vs ELT và CDC",
-        path: "content/data-engineering/phase-3-pipelines/01-etl-vs-elt.md",
-        description: "Sự chuyển dịch từ ETL sang ELT, so sánh Batch vs Streaming, kỹ thuật Change Data Capture (CDC) đồng bộ hóa dữ liệu thời gian thực."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "NoSQL Databases cho Data Engineer: MongoDB, Redis, Cassandra",
-        path: "content/data-engineering/phase-2-data-storage/04-nosql-databases.md",
-        description: "Phân tích trường hợp sử dụng các cơ sở dữ liệu phi quan hệ (NoSQL) trong hệ thống Big Data: Document, Key-Value và Wide-Column."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "So sánh Nền tảng Cloud DWH: Snowflake vs BigQuery vs Redshift",
-        path: "content/data-engineering/phase-2-data-storage/03-snowflake-bigquery-redshift.md",
-        description: "Đánh giá chi tiết 3 nền tảng Cloud Data Warehouse hàng đầu: So sánh kiến trúc tách biệt Compute/Storage, cơ chế tính phí và cách tối ưu hiệu năng."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Thiết kế mô hình dữ liệu OLAP: Star và Snowflake Schema",
-        path: "content/data-engineering/phase-2-data-storage/02-data-modeling-olap-oltp.md",
-        description: "Cách chuyển đổi tư duy từ mô hình OLTP sang OLAP. Thiết kế bảng Fact, Dimension, khóa Surrogate và xử lý Slowly Changing Dimensions (SCD)."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Data Warehouse vs Data Lake vs Data Lakehouse",
-        path: "content/data-engineering/phase-2-data-storage/01-data-warehouse-vs-data-lake.md",
-        description: "So sánh kiến trúc lưu trữ dữ liệu lớn: Sự tiến hóa từ Data Warehouse truyền thống đến Data Lake và mô hình Data Lakehouse hiện đại."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Linux, Shell Scripting và Git nâng cao cho DE",
-        path: "content/data-engineering/phase-1-foundations/04-linux-and-shell.md",
-        description: "Làm chủ câu lệnh Linux thiết yếu, viết shell script tự động hóa công việc, lập lịch cron job và các chiến lược quản lý Git nâng cao."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Python cho Data Engineering: API Ingestion và Pandas",
-        path: "content/data-engineering/phase-1-foundations/03-python-for-de.md",
-        description: "Sử dụng Python hiệu quả: Ingest data từ API bên ngoài, thao tác dữ liệu với Pandas, định dạng Parquet tối ưu và các design patterns thông dụng."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Lập trình SQL nâng cao cho Data Engineer",
-        path: "content/data-engineering/phase-1-foundations/02-sql-advanced.md",
-        description: "Làm chủ Analytical SQL: Window functions, Common Table Expressions (CTEs), tối ưu hóa câu lệnh truy vấn lớn và các pattern phân tích phổ biến."
-    },
-    {
-        category: "data-engineering",
-        date: "2026-06-03",
-        title: "Data Engineering là gì? Định nghĩa và Vòng đời dữ liệu",
+        title: "[01] Phase 1 - Foundations: Data Engineering là gì & Vòng đời dữ liệu",
         path: "content/data-engineering/phase-1-foundations/01-what-is-data-engineering.md",
         description: "Khám phá Data Engineering Lifecycle dưới góc nhìn hệ thống, các khối chức năng chính từ thu thập, lưu trữ, xử lý đến phục vụ báo cáo."
     },
     {
         category: "data-engineering",
         date: "2026-06-03",
-        title: "Tổng Quan: Data Engineer là gì và Lộ Trình Học từ BE sang DE",
-        path: "content/data-engineering/00-overview.md",
-        description: "Tìm hiểu vai trò Data Engineer, sự khác biệt cốt lõi với Backend Engineer, và lộ trình chi tiết chuyển ngành từ BE sang DE giúp bạn phỏng vấn thành công."
+        title: "[02] Phase 1 - Foundations: Python cho Data Engineering",
+        path: "content/data-engineering/phase-1-foundations/02-python-for-de.md",
+        description: "Sử dụng Python hiệu quả: Ingest data từ API bên ngoài, thao tác dữ liệu với Pandas, định dạng Parquet tối ưu và các design patterns thông dụng."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[03] Phase 1 - Foundations: Linux, Shell Scripting & Git nâng cao",
+        path: "content/data-engineering/phase-1-foundations/03-linux-and-shell.md",
+        description: "Làm chủ câu lệnh Linux thiết yếu, viết shell script tự động hóa công việc, lập lịch cron job và các chiến lược quản lý Git nâng cao."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[04] Phase 1 - Foundations: Lập trình SQL nâng cao cho DE",
+        path: "content/data-engineering/phase-1-foundations/04-sql-advanced.md",
+        description: "Làm chủ Analytical SQL: Window functions, Common Table Expressions (CTEs), tối ưu hóa câu lệnh truy vấn lớn và các pattern phân tích phổ biến."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[05] Phase 2 - Data Storage: Thiết kế mô hình dữ liệu OLAP (Star/Snowflake)",
+        path: "content/data-engineering/phase-2-data-storage/01-data-modeling-olap-oltp.md",
+        description: "Cách chuyển đổi tư duy từ mô hình OLTP sang OLAP. Thiết kế bảng Fact, Dimension, khóa Surrogate và xử lý Slowly Changing Dimensions (SCD)."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[06] Phase 2 - Data Storage: NoSQL Databases cho Data Engineer",
+        path: "content/data-engineering/phase-2-data-storage/02-nosql-databases.md",
+        description: "Phân tích trường hợp sử dụng các cơ sở dữ liệu phi quan hệ (NoSQL) trong hệ thống Big Data: Document, Key-Value và Wide-Column."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[07] Phase 2 - Data Storage: Data Warehouse vs Data Lake vs Lakehouse",
+        path: "content/data-engineering/phase-2-data-storage/03-data-warehouse-vs-data-lake.md",
+        description: "So sánh kiến trúc lưu trữ dữ liệu lớn: Sự tiến hóa từ Data Warehouse truyền thống đến Data Lake và mô hình Data Lakehouse hiện đại."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[08] Phase 2 - Data Storage: So sánh Snowflake vs BigQuery vs Redshift",
+        path: "content/data-engineering/phase-2-data-storage/04-snowflake-bigquery-redshift.md",
+        description: "Đánh giá chi tiết 3 nền tảng Cloud Data Warehouse hàng đầu: So sánh kiến trúc tách biệt Compute/Storage, cơ chế tính phí và cách tối ưu hiệu năng."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[09] Phase 3 - Pipelines: Tư duy thiết kế Pipeline (ETL vs ELT & CDC)",
+        path: "content/data-engineering/phase-3-pipelines/01-etl-vs-elt.md",
+        description: "Sự chuyển dịch từ ETL sang ELT, so sánh Batch vs Streaming, kỹ thuật Change Data Capture (CDC) đồng bộ hóa dữ liệu thời gian thực."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[10] Phase 3 - Pipelines: Điều phối Pipeline với Apache Airflow",
+        path: "content/data-engineering/phase-3-pipelines/02-apache-airflow.md",
+        description: "Hướng dẫn xây dựng và điều phối data workflow bằng Python: Định nghĩa DAGs, Tasks, truyền tham số XCom và cơ chế retry tự động."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[11] Phase 3 - Pipelines: Biến đổi dữ liệu thông minh với dbt",
+        path: "content/data-engineering/phase-3-pipelines/03-dbt-data-build-tool.md",
+        description: "Làm chủ dbt - tiêu chuẩn công nghiệp cho Analytics Engineering: Viết SQL models, snapshots lịch sử, macros tái sử dụng và testing tự động."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[12] Phase 3 - Pipelines: Data Quality & Monitoring",
+        path: "content/data-engineering/phase-3-pipelines/04-data-quality.md",
+        description: "Ngăn ngừa \"rác vào, rác ra\" (GIGO) bằng Data Contracts, dbt tests, và framework kiểm định chất lượng dữ liệu Great Expectations."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[13] Phase 4 - Big Data: Hệ thống phân tán cho Data Engineer",
+        path: "content/data-engineering/phase-4-big-data/01-distributed-computing-concepts.md",
+        description: "Nền tảng Big Data: MapReduce, kỹ thuật Partitioning & Sharding, định lý CAP, định dạng Serialization (Avro, Parquet) và Cluster management."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[14] Phase 4 - Big Data: Xử lý dữ liệu lớn với Apache Spark",
+        path: "content/data-engineering/phase-4-big-data/02-apache-spark.md",
+        description: "Tìm hiểu RDD, DataFrames, Lazy Evaluation, tối ưu hóa Spark Catalyst, kỹ thuật Partitioning và thực hành viết PySpark job."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[15] Phase 4 - Big Data: Streaming Data với Apache Kafka",
+        path: "content/data-engineering/phase-4-big-data/03-apache-kafka-streaming.md",
+        description: "Hiểu rõ Topics, Partitions, Consumer Groups, Offsets, cơ chế phân phối tin nhắn và ứng dụng trong các streaming pipelines."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[16] Phase 5 - Cloud & Ops: Dịch vụ Cloud (AWS/GCP) & Terraform IaC",
+        path: "content/data-engineering/phase-5-cloud-and-modern/01-cloud-platforms-aws-gcp-azure.md",
+        description: "Bản đồ đối chiếu các dịch vụ DE trên AWS, GCP, Azure và cách quản lý tài nguyên hạ tầng khai báo tự động bằng Terraform."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[17] Phase 5 - Cloud & Ops: Docker & Kubernetes cho Data Pipelines",
+        path: "content/data-engineering/phase-5-cloud-and-modern/02-docker-kubernetes-for-de.md",
+        description: "Container hóa data pipelines, thiết lập môi trường local bằng docker-compose, submit Spark jobs và deploy Airflow trên Kubernetes."
+    },
+    {
+        category: "data-engineering",
+        date: "2026-06-03",
+        title: "[18] Phase 5 - Cloud & Ops: Data Governance và Security",
+        path: "content/data-engineering/phase-5-cloud-and-modern/03-data-governance-and-security.md",
+        description: "Bảo vệ dữ liệu với Masking/Hashing PII, phân quyền Column/Row-level security, Data Catalog (Datahub) và Data Lineage nguồn gốc dữ liệu."
     },
 
     // === DSA (DATA STRUCTURES & ALGORITHMS) ===

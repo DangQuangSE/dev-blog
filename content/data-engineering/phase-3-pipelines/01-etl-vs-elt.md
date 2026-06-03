@@ -1,4 +1,4 @@
-# ETL vs ELT: Hiểu đúng về Data Pipeline
+# [09] Phase 3 - Pipelines: Tư duy thiết kế Pipeline (ETL vs ELT & CDC)
 
 ## Giới thiệu
 

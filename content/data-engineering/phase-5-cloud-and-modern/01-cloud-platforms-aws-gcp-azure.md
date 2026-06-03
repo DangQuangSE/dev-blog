@@ -1,4 +1,4 @@
-# Cloud Platforms cho Data Engineer: AWS, GCP và Azure
+# [16] Phase 5 - Cloud & Ops: Dịch vụ Cloud (AWS/GCP) & Terraform IaC
 
 ## Giới thiệu
 

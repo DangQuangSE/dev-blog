@@ -1,4 +1,4 @@
-# Data Modeling cho Data Engineer: Star Schema, Snowflake Schema và SCD
+# [05] Phase 2 - Data Storage: Thiết kế mô hình dữ liệu OLAP (Star/Snowflake)
 
 ## Giới thiệu
 

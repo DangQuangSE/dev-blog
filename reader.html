@@ -132,7 +132,7 @@
             }
 
             try {
-                const response = await fetch(postPath);
+                const response = await fetch(postPath + '?t=' + new Date().getTime());
                 if (!response.ok) throw new Error('Không thể tải tệp: ' + response.statusText);
                 
                 const markdown = await response.text();

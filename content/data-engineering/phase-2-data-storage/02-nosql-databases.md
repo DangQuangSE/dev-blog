@@ -1,4 +1,4 @@
-# NoSQL Databases cho Data Engineer
+# [06] Phase 2 - Data Storage: NoSQL Databases cho Data Engineer
 
 ## Giới thiệu
 

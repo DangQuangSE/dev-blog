@@ -1,4 +1,4 @@
-# Linux, Shell Scripting và Git cho Data Engineer
+# [03] Phase 1 - Foundations: Linux, Shell Scripting & Git nâng cao
 
 ## Giới thiệu
 

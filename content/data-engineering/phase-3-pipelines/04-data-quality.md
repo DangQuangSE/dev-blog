@@ -1,4 +1,4 @@
-# Data Quality và Data Governance trong DE
+# [12] Phase 3 - Pipelines: Data Quality & Monitoring
 
 ## Giới thiệu
 

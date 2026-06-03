@@ -1,4 +1,4 @@
-# Snowflake, BigQuery và Amazon Redshift: So sánh Cloud Data Warehouses
+# [08] Phase 2 - Data Storage: So sánh Snowflake vs BigQuery vs Redshift
 
 ## Giới thiệu
 

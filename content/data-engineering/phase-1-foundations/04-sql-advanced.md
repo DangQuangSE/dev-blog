@@ -1,4 +1,4 @@
-# SQL Nâng Cao cho Data Engineer
+# [04] Phase 1 - Foundations: Lập trình SQL nâng cao cho DE
 
 ## Giới thiệu
 

@@ -1,4 +1,4 @@
-# Python cho Data Engineer
+# [02] Phase 1 - Foundations: Python cho Data Engineering
 
 ## Giới thiệu
 
