@@ -174,17 +174,129 @@ const BLOG_POSTS = [
     // === JAVA ===
     {
         category: "java",
-        date: "2026-05-04",
-        title: "Nguyên tắc SOLID trong lập trình hướng đối tượng",
-        path: "content/programming-languages/java/02-nguyen-tac-solid-trong-java.md",
-        description: "Tiêu chuẩn vàng trong thiết kế phần mềm. 5 nguyên tắc giúp hệ thống linh hoạt, dễ bảo trì và mở rộng một cách bền vững."
+        date: "2026-06-03",
+        title: "[00] Lộ trình học: Tổng Quan về Lập trình Java",
+        path: "content/programming-languages/java/00-overview.md",
+        description: "Tổng quan về ngôn ngữ lập trình Java, các tính năng nổi bật giúp Java trường tồn và lộ trình học chi tiết từ cơ bản đến nâng cao."
     },
     {
         category: "java",
-        date: "2026-05-04",
-        title: "Bốn đặc tính cơ bản của OOP trong Java",
-        path: "content/programming-languages/java/01-bon-dac-tinh-oop-trong-java.md",
-        description: "Khám phá 4 cột trụ của OOP: Đóng gói, Kế thừa, Đa hình và Trừu tượng. Tìm hiểu lý do ra đời và cách chúng giải quyết các vấn đề của lập trình thủ tục."
+        date: "2026-06-03",
+        title: "[01] Phase 1 - Foundations: Phân biệt JDK, JRE, JVM & Cơ chế biên dịch",
+        path: "content/programming-languages/java/phase-1-foundations/01-jvm-jre-jdk.md",
+        description: "Tìm hiểu cấu trúc máy ảo Java (JVM), môi trường chạy (JRE), bộ phát triển (JDK) và quy trình biên dịch Bytecode tĩnh/động với JIT Compiler."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[02] Phase 1 - Foundations: Cú pháp cơ bản, Biến, Ép kiểu, Toán tử & Mảng",
+        path: "content/programming-languages/java/phase-1-foundations/02-java-basics-syntax.md",
+        description: "Phân biệt kiểu dữ liệu nguyên thủy (Stack) vs tham chiếu (Heap), cơ chế tối ưu String Pool và các cú pháp điều khiển luồng, mảng cơ bản."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[03] Phase 2 - OOP: Lớp, Đối tượng, Access Specifiers, Static & Final",
+        path: "content/programming-languages/java/phase-2-oop/03-basics-of-oop.md",
+        description: "Làm chủ các khái niệm nền tảng của OOP: Lớp, Đối tượng, phạm vi truy cập dữ liệu, biến/phương thức static và từ khóa hằng số final."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[04] Phase 2 - OOP: Kế thừa, Trừu tượng, Đóng gói, Đa hình, Records & Enums",
+        path: "content/programming-languages/java/phase-2-oop/04-more-about-oop.md",
+        description: "Khám phá các tính năng OOP nâng cao, cơ chế Dynamic Binding, bản chất Pass-by-value của Java và các tính năng hiện đại như Record, Enum."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[05] Phase 2 - OOP: Áp dụng 5 nguyên tắc SOLID trong Java",
+        path: "content/programming-languages/java/phase-2-oop/05-nguyen-tac-solid-trong-java.md",
+        description: "Chi tiết 5 nguyên tắc thiết kế SOLID giúp lập trình viên viết mã nguồn sạch, ít phụ thuộc, dễ dàng mở rộng và bảo trì hệ thống."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[06] Phase 3 - Common APIs: Làm việc với Date-Time, RegEx, Cryptography & Networking",
+        path: "content/programming-languages/java/phase-3-common-apis/06-java-common-apis.md",
+        description: "Làm chủ các API thiết yếu: Phân tích múi giờ với Java Time API mới, so khớp mẫu RegEx, mã hóa bảo mật AES/SHA và gọi HTTP với HttpClient mới."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[07] Phase 3 - Common APIs: Quản lý Optionals, I/O Stream & Thao tác File",
+        path: "content/programming-languages/java/phase-3-common-apis/07-io-file-operations.md",
+        description: "Xử lý lỗi tham chiếu null chuyên nghiệp với Optional, làm việc với luồng nhập xuất (I/O) và thao tác file siêu tốc bằng Java NIO.2."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[08] Phase 4 - Collections & Generics: Làm chủ List, Set, Map, Queue & Stack",
+        path: "content/programming-languages/java/phase-4-collections-generics/08-collections-framework.md",
+        description: "Khám phá thế giới cấu trúc dữ liệu Java: Giải mã cơ chế tự co giãn của ArrayList và cơ chế băm/va chạm cây đỏ-đen của HashMap trong RAM."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[09] Phase 4 - Collections & Generics: Generics, Type Erasure & Wildcards",
+        path: "content/programming-languages/java/phase-4-collections-generics/09-generics-wildcards.md",
+        description: "Viết mã nguồn an toàn kiểu dữ liệu bằng Generics, cơ chế xóa kiểu (Type Erasure) của trình biên dịch và nguyên tắc vàng PECS khi dùng Wildcard."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[10] Phase 5 - Exceptions & FP: Xử lý ngoại lệ, try-with-resources, Annotations & Modules",
+        path: "content/programming-languages/java/phase-5-exceptions-fp/10-exceptions-handling.md",
+        description: "Quản lý lỗi chuyên nghiệp bằng Exception, tự động đóng tài nguyên qua try-with-resources, tạo custom Annotations và cấu trúc dự án Java Modules."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[11] Phase 5 - Exceptions & FP: Lập trình hàm: Lambda, Functional Interfaces & Stream API",
+        path: "content/programming-languages/java/phase-5-exceptions-fp/11-functional-programming-stream.md",
+        description: "Lập trình hàm ngắn gọn, khai báo: Hiểu sâu Functional Interfaces chuẩn, biểu thức Lambda và xử lý tập hợp mảng song song với Stream API."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[12] Phase 6 - Concurrency: Threads, volatile, JMM, Thread Pool & Virtual Threads",
+        path: "content/programming-languages/java/phase-6-concurrency/12-concurrency-jmm-threads.md",
+        description: "Lập trình đa luồng nâng cao: volatile, Happens-Before, quản lý Thread Pool tối ưu và giải pháp cách mạng Virtual Threads trong Java 21+."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[13] Phase 6 - Concurrency: Nguyên lý Dependency Injection & Design Patterns",
+        path: "content/programming-languages/java/phase-6-concurrency/13-dependency-injection.md",
+        description: "Hiểu sâu nguyên lý IoC/DI, so sánh Constructor vs Setter Injection và áp dụng các mẫu thiết kế Strategy, Factory, Singleton trong Java."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[14] Phase 7 - Ecosystem: Công cụ Build (Maven, Gradle, Bazel) & Web Frameworks",
+        path: "content/programming-languages/java/phase-7-ecosystem/14-build-tools-frameworks.md",
+        description: "Tổng quan các công cụ quản lý build tự động Maven/Gradle/Bazel và so sánh các web frameworks hàng đầu: Spring Boot, Quarkus, Javalin, Play."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[15] Phase 7 - Ecosystem: Truy xuất Cơ sở dữ liệu: JDBC, EBean, Hibernate & JPA",
+        path: "content/programming-languages/java/phase-7-ecosystem/15-database-access.md",
+        description: "Kết nối cơ sở dữ liệu quan hệ trong Java: So sánh JDBC thô vs các bộ ORM (EBean, Hibernate, JPA) và cách xử lý lỗi hiệu năng N+1 Query."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[16] Phase 7 - Ecosystem: Logging Frameworks (Logback, Log4j2, SLF4J) & Javadoc",
+        path: "content/programming-languages/java/phase-7-ecosystem/16-logging-documentation.md",
+        description: "Ghi log chuyên nghiệp với SLF4J, so sánh Logback vs Log4j2 (lỗ hổng Log4Shell) và hướng dẫn viết tài liệu Javadoc tiêu chuẩn."
+    },
+    {
+        category: "java",
+        date: "2026-06-03",
+        title: "[17] Phase 7 - Ecosystem: Kiểm thử toàn diện: Unit, Integration, Mocking & Behavior Testing",
+        path: "content/programming-languages/java/phase-7-ecosystem/17-testing-frameworks.md",
+        description: "Bảo vệ mã nguồn an toàn bằng kiểm thử: JUnit 5, giả lập dependency với Mockito, kiểm thử API với REST Assured và BDD test với Cucumber."
     },
 
     // === SPRING BOOT ===
