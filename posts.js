@@ -317,85 +317,92 @@ const BLOG_POSTS = [
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[02] Phase 1 - Foundations: Spring Core: IoC, DI & Bean Lifecycle",
+        title: "[02] Phase 1 - Foundations: Spring Core: IoC, DI, AOP & Bean Lifecycle",
         path: "content/frameworks/springboot/phase-1-foundations/02-spring-core-fundamentals.md",
         description: "Khám phá các khái niệm nền tảng của Spring: Inversion of Control (IoC), Dependency Injection (DI), Bean Lifecycle và Aspect Oriented Programming (AOP)."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[03] Phase 2 - REST APIs: Xây dựng RESTful API với Spring MVC",
-        path: "content/frameworks/springboot/phase-2-rest-apis/03-restful-api-spring-mvc.md",
+        title: "[03] Phase 2 - Spring MVC: Kiến trúc Spring MVC: Servlet, JSP & Components",
+        path: "content/frameworks/springboot/phase-2-spring-mvc/03-spring-mvc-architecture.md",
+        description: "Tìm hiểu kiến trúc web của Java: Servlets, JSP Files, DispatcherServlet, HandlerMapping, ViewResolver và mô hình Front Controller."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[04] Phase 2 - Spring MVC: Xây dựng RESTful API với Spring MVC",
+        path: "content/frameworks/springboot/phase-2-spring-mvc/04-restful-api-spring-mvc.md",
         description: "Xây dựng RESTful API chuẩn REST: Sự khác biệt giữa Controller và RestController, DTO Pattern và kiểm soát HTTP response với ResponseEntity."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[04] Phase 2 - REST APIs: Exception Handling & Validation trong Spring Boot",
-        path: "content/frameworks/springboot/phase-2-rest-apis/04-exception-handling-validation.md",
+        title: "[05] Phase 2 - Spring MVC: Exception Handling & Validation trong Spring Boot",
+        path: "content/frameworks/springboot/phase-2-spring-mvc/05-exception-handling-validation.md",
         description: "Ràng buộc dữ liệu đầu vào bằng Jakarta Bean Validation (@Valid) và xử lý lỗi tập trung an toàn với RestControllerAdvice."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[05] Phase 3 - Data Access: Spring Data JPA & Hibernate Core",
-        path: "content/frameworks/springboot/phase-3-data-access/05-spring-data-jpa-hibernate.md",
-        description: "Tương tác cơ sở dữ liệu quan hệ bằng Spring Data JPA & Hibernate: Quản lý giao dịch với @Transactional và xử lý lỗi hiệu năng N+1 Query."
+        title: "[06] Phase 3 - Data Access: Hibernate Core: Transactions, Relationships & Entity Lifecycle",
+        path: "content/frameworks/springboot/phase-3-data-access/06-hibernate-core-lifecycle.md",
+        description: "Khám phá bản chất của ORM: Quản lý giao dịch, các loại quan hệ thực tế (Fetch/Cascade Types) và 4 trạng thái vòng đời của Entity."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[06] Phase 3 - Data Access: Kết nối Database NoSQL với Spring Data MongoDB",
-        path: "content/frameworks/springboot/phase-3-data-access/06-spring-data-mongodb.md",
-        description: "Lưu trữ dữ liệu phi cấu trúc với MongoDB: So sánh nhúng (Embedded) và tham chiếu (Reference) cùng với cách sử dụng MongoRepository và MongoTemplate."
+        title: "[07] Phase 3 - Data Access: Spring Data: Spring Data JPA, MongoDB & JDBC",
+        path: "content/frameworks/springboot/phase-3-data-access/07-spring-data-jpa-nosql.md",
+        description: "So sánh 3 nền tảng dữ liệu trong Spring Data: Spring Data JPA, NoSQL MongoDB và Spring Data JDBC tối giản."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[07] Phase 4 - Security: Spring Security Architecture & Authentication Flow",
-        path: "content/frameworks/springboot/phase-4-security/07-spring-security-architecture.md",
+        title: "[08] Phase 4 - Security: Spring Security Architecture & Authentication Flow",
+        path: "content/frameworks/springboot/phase-4-security/08-spring-security-architecture.md",
         description: "Hiểu sâu về cơ chế bảo mật của Spring Security: Kiến trúc Filter Chain, DelegatingFilterProxy và phân tích luồng xác thực chi tiết."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[08] Phase 4 - Security: Bảo mật nâng cao: IDOR, RBAC & JWT",
-        path: "content/frameworks/springboot/phase-4-security/08-idor-rbac-jwt.md",
-        description: "Ngăn chặn lỗ hổng IDOR, triển khai cơ chế phân quyền dựa trên vai trò (RBAC), thuộc tính (ABAC) và tích hợp JSON Web Token (JWT)."
+        title: "[09] Phase 4 - Security: Bảo mật nâng cao: JWT & OAuth2",
+        path: "content/frameworks/springboot/phase-4-security/09-jwt-oauth2-security.md",
+        description: "Bảo mật hệ thống hiện đại: Phân biệt cơ chế xác thực không trạng thái JWT và giao thức ủy quyền OAuth2 (Google Login)."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[09] Phase 5 - Advanced: Lập trình bất đồng bộ & Thread Pool",
-        path: "content/frameworks/springboot/phase-5-advanced/09-async-thread-pool.md",
+        title: "[10] Phase 5 - Advanced: Lập trình bất đồng bộ & Thread Pool",
+        path: "content/frameworks/springboot/phase-5-advanced/10-async-thread-pool.md",
         description: "Hướng dẫn cấu hình ThreadPoolTaskExecutor để xử lý bất đồng bộ (@Async) hiệu quả và tránh cạn kiệt tài nguyên hệ thống."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[10] Phase 5 - Advanced: Monitoring & Observability với Spring Boot Actuator",
-        path: "content/frameworks/springboot/phase-5-advanced/10-monitoring-actuator.md",
+        title: "[11] Phase 5 - Advanced: Monitoring & Observability với Actuator & Micrometer",
+        path: "content/frameworks/springboot/phase-5-advanced/11-monitoring-observability-actuator.md",
         description: "Giám sát sức khỏe ứng dụng thời gian thực bằng Spring Boot Actuator, tích hợp Micrometer thu thập số liệu và hiển thị trên Grafana."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[11] Phase 6 - Testing: Unit Testing & Integration Testing với MockMvc",
-        path: "content/frameworks/springboot/phase-6-testing/11-unit-integration-testing.md",
+        title: "[12] Phase 6 - Testing: Kiểm thử: JUnit 5, Mockito, MockMvc, @SpringBootTest & @MockBean",
+        path: "content/frameworks/springboot/phase-6-testing/12-unit-integration-testing.md",
         description: "Phân biệt Unit Test và Integration Test: Sử dụng JUnit 5, Mockito và MockMvc giả lập Servlet để kiểm thử toàn diện luồng ứng dụng."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[12] Phase 6 - Testing: Containerized Testing với Testcontainers",
-        path: "content/frameworks/springboot/phase-6-testing/12-testcontainers.md",
+        title: "[13] Phase 6 - Testing: Containerized Testing với Testcontainers",
+        path: "content/frameworks/springboot/phase-6-testing/13-testcontainers.md",
         description: "Sử dụng thư viện Testcontainers để chạy cơ sở dữ liệu PostgreSQL thực tế trong môi trường Docker giả lập lúc chạy kiểm thử tích hợp."
     },
     {
         category: "springboot",
         date: "2026-06-03",
-        title: "[13] Phase 7 - Microservices: Kiến trúc Microservices với Spring Cloud",
-        path: "content/frameworks/springboot/phase-7-microservices/13-spring-cloud-microservices.md",
-        description: "Giới thiệu các thành phần thiết yếu để xây dựng hệ thống phân tán lớn: Service Discovery (Eureka), API Gateway và Config Server."
+        title: "[14] Phase 7 - Microservices: Kiến trúc Microservices với Spring Cloud",
+        path: "content/frameworks/springboot/phase-7-microservices/14-spring-cloud-microservices.md",
+        description: "Xây dựng hệ thống phân tán lớn: Service Discovery (Eureka), API Gateway, Config Server, Circuit Breaker (Resilience4j) và Feign Client."
     }
 ];

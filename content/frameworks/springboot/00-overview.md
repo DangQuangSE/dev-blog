@@ -4,7 +4,7 @@
 
 Trong thế giới phát triển ứng dụng Java doanh nghiệp (Enterprise Java), **Spring Boot** đã trở thành tiêu chuẩn công nghiệp (de-facto standard). Nó giúp đơn giản hóa quá trình khởi tạo, cấu hình và chạy các ứng dụng dựa trên Spring. 
 
-Nếu bạn là một Java Developer hoặc đang bắt đầu tìm hiểu về phát triển Backend, việc làm chủ Spring Boot theo một lộ trình bài bản là chìa khóa mở ra cánh cửa sự nghiệp tại các doanh nghiệp lớn. Bài viết này tổng quan về hệ sinh thái Spring Boot và thiết lập một lộ trình học tập tối ưu từ cơ bản đến nâng cao.
+Lộ trình này được thiết kế dựa trên tiêu chuẩn tại [roadmap.sh/spring-boot](https://roadmap.sh/spring-boot), giúp bạn đi từ các khái niệm nền tảng, kiến trúc Spring MVC, cách tương tác cơ sở dữ liệu quan hệ/phi quan hệ, tích hợp bảo mật, lập trình bất đồng bộ, observability cho đến kiến trúc vi dịch vụ (Microservices).
 
 ---
 
@@ -44,31 +44,32 @@ Trước khi có Spring Boot, chúng ta có **Spring Framework** (ra đời năm
 Dưới đây là danh sách các bài viết chi tiết được lập chỉ mục và sắp xếp theo đúng lộ trình học chuẩn tại [roadmap.sh/spring-boot](https://roadmap.sh/spring-boot):
 
 ### Phase 1: Foundations (Nền tảng cốt lõi)
-1. **Giới thiệu nền tảng**: [\[01\] Phase 1: Spring Framework & Spring Boot là gì?](reader.html?post=content/frameworks/springboot/phase-1-foundations/01-introduction-to-spring.md) - Tìm hiểu kiến trúc tổng thể, cơ chế Auto-configuration và triết lý thiết kế.
-2. **Spring Core**: [\[02\] Phase 1: Spring Core: IoC, DI & Bean Lifecycle](reader.html?post=content/frameworks/springboot/phase-1-foundations/02-spring-core-fundamentals.md) - Nắm vững ba cột trụ IoC, Dependency Injection và vòng đời của một Bean.
+1. **Giới thiệu nền tảng**: [\[01\] Phase 1: Spring Framework & Spring Boot là gì?](reader.html?post=content/frameworks/springboot/phase-1-foundations/01-introduction-to-spring.md) - Khám phá lịch sử, Convention over Configuration, Starters, Auto-Configuration và Embedded Servers.
+2. **Spring Core**: [\[02\] Phase 1: Spring Core: IoC, DI, AOP & Bean Lifecycle](reader.html?post=content/frameworks/springboot/phase-1-foundations/02-spring-core-fundamentals.md) - Nắm vững ba cột trụ IoC, Dependency Injection, Bean Lifecycle/Scopes và Spring AOP.
 
-### Phase 2: REST APIs & Spring MVC
-1. **Xây dựng API**: [\[03\] Phase 2: Xây dựng RESTful API với Spring MVC](reader.html?post=content/frameworks/springboot/phase-2-rest-apis/03-restful-api-spring-mvc.md) - Cách tạo các REST Controller, làm việc với DTO và Response Entity.
-2. **Kiểm thực & Xử lý lỗi**: [\[04\] Phase 2: Exception Handling & Validation trong Spring Boot](reader.html?post=content/frameworks/springboot/phase-2-rest-apis/04-exception-handling-validation.md) - Ràng buộc dữ liệu đầu vào và bắt lỗi tập trung với `@ControllerAdvice`.
+### Phase 2: Spring MVC (Phát triển ứng dụng Web)
+1. **Kiến trúc Spring MVC**: [\[03\] Phase 2: Kiến trúc Spring MVC: Servlet, JSP & Components](reader.html?post=content/frameworks/springboot/phase-2-spring-mvc/03-spring-mvc-architecture.md) - Hiểu sâu về Servlet, JSP Files, DispatcherServlet và các thành phần trong Spring MVC.
+2. **Xây dựng REST API**: [\[04\] Phase 2: Xây dựng RESTful API với Spring MVC](reader.html?post=content/frameworks/springboot/phase-2-spring-mvc/04-restful-api-spring-mvc.md) - Cách tạo các REST Controller, làm việc với DTO và Response Entity.
+3. **Kiểm thực & Xử lý lỗi**: [\[05\] Phase 2: Exception Handling & Validation trong Spring Boot](reader.html?post=content/frameworks/springboot/phase-2-spring-mvc/05-exception-handling-validation.md) - Ràng buộc dữ liệu đầu vào bằng `@Valid` và bắt lỗi tập trung với `@RestControllerAdvice`.
 
 ### Phase 3: Data Access (Tương tác Cơ sở dữ liệu)
-1. **SQL & Hibernate**: [\[05\] Phase 3: Spring Data JPA & Hibernate Core](reader.html?post=content/frameworks/springboot/phase-3-data-access/05-spring-data-jpa-hibernate.md) - Thiết kế Entity, Repository, xử lý Transactions và tối ưu hóa câu hỏi N+1.
-2. **NoSQL Databases**: [\[06\] Phase 3: Kết nối Database NoSQL với Spring Data MongoDB](reader.html?post=content/frameworks/springboot/phase-3-data-access/06-spring-data-mongodb.md) - Lưu trữ phi quan hệ với MongoDB trong Spring Boot.
+1. **Hibernate Core**: [\[06\] Phase 3: Hibernate Core: Transactions, Relationships & Entity Lifecycle](reader.html?post=content/frameworks/springboot/phase-3-data-access/06-hibernate-core-lifecycle.md) - Đi sâu vào cơ chế Transaction, mối quan hệ và vòng đời Entity của Hibernate.
+2. **Spring Data**: [\[07\] Phase 3: Spring Data: Spring Data JPA, MongoDB & JDBC](reader.html?post=content/frameworks/springboot/phase-3-data-access/07-spring-data-jpa-nosql.md) - Sự khác biệt và trường hợp sử dụng Spring Data JPA, MongoDB và Spring Data JDBC.
 
 ### Phase 4: Spring Security (Bảo mật hệ thống)
-1. **Kiến trúc bảo mật**: [\[07\] Phase 4: Spring Security Architecture & Authentication Flow](reader.html?post=content/frameworks/springboot/phase-4-security/07-spring-security-architecture.md) - Hiểu sâu về Filter Chain, UserDetailsService và luồng xác thực.
-2. **Bảo mật nâng cao**: [\[08\] Phase 4: Bảo mật nâng cao: IDOR, RBAC & JWT](reader.html?post=content/frameworks/springboot/phase-4-security/08-idor-rbac-jwt.md) - Ngăn chặn IDOR, phân quyền RBAC và tích hợp mã token JWT.
+1. **Kiến trúc bảo mật**: [\[08\] Phase 4: Spring Security Architecture & Authentication Flow](reader.html?post=content/frameworks/springboot/phase-4-security/08-spring-security-architecture.md) - Hiểu sâu về Filter Chain, UserDetailsService và luồng xác thực.
+2. **Bảo mật nâng cao**: [\[09\] Phase 4: Bảo mật nâng cao: JWT & OAuth2](reader.html?post=content/frameworks/springboot/phase-4-security/09-jwt-oauth2-security.md) - Phân biệt cơ chế xác thực JWT và giao thức OAuth2 trong thiết kế API an toàn.
 
 ### Phase 5: Advanced & Monitoring (Nâng cao & Vận hành)
-1. **Xử lý bất đồng bộ**: [\[09\] Phase 5: Lập trình bất đồng bộ & Thread Pool](reader.html?post=content/frameworks/springboot/phase-5-advanced/09-async-thread-pool.md) - Tối ưu hóa hiệu năng ứng dụng với `@Async` và quản lý Thread Pool.
-2. **Giám sát hệ thống**: [\[10\] Phase 5: Monitoring & Observability với Spring Boot Actuator](reader.html?post=content/frameworks/springboot/phase-5-advanced/10-monitoring-actuator.md) - Theo dõi sức khỏe ứng dụng thời gian thực.
+1. **Xử lý bất đồng bộ**: [\[10\] Phase 5: Lập trình bất đồng bộ & Thread Pool](reader.html?post=content/frameworks/springboot/phase-5-advanced/10-async-thread-pool.md) - Tối ưu hóa hiệu năng ứng dụng với `@Async` và quản lý Thread Pool.
+2. **Observability**: [\[11\] Phase 5: Monitoring & Observability với Actuator & Micrometer](reader.html?post=content/frameworks/springboot/phase-5-advanced/11-monitoring-observability-actuator.md) - Giám sát sức khỏe ứng dụng thời gian thực bằng Actuator, Micrometer và Grafana.
 
 ### Phase 6: Testing (Kiểm thử phần mềm)
-1. **Kiểm thử cơ bản**: [\[11\] Phase 6: Unit Testing & Integration Testing với MockMvc](reader.html?post=content/frameworks/springboot/phase-6-testing/11-unit-integration-testing.md) - Sử dụng JUnit 5, Mockito và MockMvc để kiểm thử ứng dụng.
-2. **Kiểm thử Container**: [\[12\] Phase 6: Containerized Testing với Testcontainers](reader.html?post=content/frameworks/springboot/phase-6-testing/12-testcontainers.md) - Chạy tích hợp database thực tế trong môi trường Docker lúc test.
+1. **Kiểm thử cơ bản**: [\[12\] Phase 6: Kiểm thử: JUnit 5, Mockito, MockMvc, @SpringBootTest & @MockBean](reader.html?post=content/frameworks/springboot/phase-6-testing/12-unit-integration-testing.md) - JUnit 5, Mockito và MockMvc, sử dụng `@SpringBootTest` và `@MockBean`.
+2. **Kiểm thử Container**: [\[13\] Phase 6: Containerized Testing với Testcontainers](reader.html?post=content/frameworks/springboot/phase-6-testing/13-testcontainers.md) - Chạy tích hợp database thực tế trong môi trường Docker lúc test.
 
 ### Phase 7: Microservices & Cloud
-1. **Kiến trúc hệ thống lớn**: [\[13\] Phase 7: Kiến trúc Microservices với Spring Cloud](reader.html?post=content/frameworks/springboot/phase-7-microservices/13-spring-cloud-microservices.md) - Giới thiệu Service Discovery (Eureka), API Gateway và Config Server.
+1. **Kiến trúc hệ thống lớn**: [\[14\] Phase 7: Kiến trúc Microservices với Spring Cloud](reader.html?post=content/frameworks/springboot/phase-7-microservices/14-spring-cloud-microservices.md) - Thành phần Eureka, Gateway, Config Server, Circuit Breaker (Resilience4j) và Feign Client.
 
 ---
 

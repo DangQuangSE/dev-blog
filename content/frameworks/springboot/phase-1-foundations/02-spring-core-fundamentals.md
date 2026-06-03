@@ -1,4 +1,4 @@
-# [02] Phase 1 - Foundations: Spring Core: IoC, DI & Bean Lifecycle
+# [02] Phase 1 - Foundations: Spring Core: IoC, DI, AOP & Bean Lifecycle
 
 Trong thế giới của Spring Framework, việc hiểu rõ các khái niệm cốt lõi như IoC, DI và AOP không chỉ giúp bạn viết code chạy được, mà còn giúp hệ thống của bạn linh hoạt, dễ bảo trì và mở rộng. Bài viết này sẽ hệ thống lại những kiến thức quan trọng nhất về Spring Core.
 

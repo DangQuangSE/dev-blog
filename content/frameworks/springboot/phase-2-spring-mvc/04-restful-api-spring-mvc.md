@@ -1,9 +1,9 @@
-# [03] Phase 2 - REST APIs: Xây dựng RESTful API với Spring MVC
+# [04] Phase 2 - Spring MVC: Xây dựng RESTful API với Spring MVC
 
 ## 1. Nguồn gốc của sự chuyển dịch từ MVC truyền thống sang REST API
 
 ### Cách làm cũ (Traditional Server-Side Rendering)
-Trước đây, các ứng dụng Java Web sử dụng JSP (JavaServer Pages), JSF hoặc Thymeleaf để kết xuất (render) giao diện trực tiếp trên máy chủ.
+Trước đây, các ứng dụng Java Web sử dụng JSP (JavaServer Pages) hoặc Thymeleaf để kết xuất (render) giao diện trực tiếp trên máy chủ.
 - Khi người dùng gửi request, server sẽ truy vấn cơ sở dữ liệu, điền dữ liệu vào template HTML và trả về trang HTML hoàn chỉnh cho trình duyệt.
 - **Hạn chế**: Mỗi lần chuyển trang hoặc thay đổi dữ liệu nhỏ, trình duyệt phải tải lại toàn bộ trang (Full Page Reload), gây lãng phí băng thông và trải nghiệm người dùng gián đoạn.
 
@@ -81,6 +81,11 @@ public class UserResponseDTO {
 
 ### Ví dụ xây dựng API CRUD chuẩn chỉ:
 ```java
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import java.net.URI;
+
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -109,7 +114,7 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    // 3. Xóa tài nguyên - Trả về 24 No Content
+    // 3. Xóa tài nguyên - Trả về 204 No Content
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.delete(id);
