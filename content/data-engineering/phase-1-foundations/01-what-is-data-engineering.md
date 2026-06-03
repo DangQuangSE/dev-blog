@@ -1,4 +1,4 @@
-# What is Data Engineering? - DE Lifecycle và Vai Trò
+# [01] Phase 1 - Foundations: Data Engineering là gì & Vòng đời dữ liệu
 
 ## Giới thiệu
 

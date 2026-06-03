@@ -1,4 +1,4 @@
-# Data Warehouse, Data Lake và Data Lakehouse
+# [07] Phase 2 - Data Storage: Data Warehouse vs Data Lake vs Lakehouse
 
 ## Giới thiệu
 

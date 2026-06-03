@@ -1,4 +1,4 @@
-# Tổng Quan: Data Engineer là gì và Lộ Trình Học
+# [00] Lộ trình học: Tổng Quan về Data Engineering
 
 ## Giới thiệu
 
@@ -121,35 +121,35 @@ Nhưng sau đó, cuộc cách mạng dữ liệu xảy ra:
 
 ## 5. Lộ trình học (Roadmap)
 
-Dựa trên roadmap.sh và thực tế tuyển dụng, đây là lộ trình khuyến nghị:
+Dưới đây là danh sách các bài viết chi tiết được lập chỉ mục và sắp xếp theo đúng lộ trình học chuẩn tại [roadmap.sh/data-engineer](https://roadmap.sh/data-engineer):
 
-### Phase 1: Foundations (4-6 tuần)
-- ✅ SQL Advanced (Window functions, CTEs, Query optimization)
-- ✅ Python cho DE (Pandas, file I/O, data formats)
-- ✅ Linux & Shell scripting cơ bản
-- ✅ Git nâng cao (branching strategy, PR workflow)
+### Phase 1: Foundations (Nền tảng)
+1. **Tổng quan & Định nghĩa**: [\[01\] Phase 1: Data Engineering là gì & Vòng đời dữ liệu](reader.html?post=content/data-engineering/phase-1-foundations/01-what-is-data-engineering.md) - Khám phá vòng đời dữ liệu và vai trò DE.
+2. **Kỹ năng lập trình**: [\[02\] Phase 1: Python cho Data Engineering](reader.html?post=content/data-engineering/phase-1-foundations/02-python-for-de.md) - Ingest data từ API, Pandas cơ bản, định dạng Parquet.
+3. **Môi trường & Hệ thống**: [\[03\] Phase 1: Linux, Shell Scripting & Git nâng cao](reader.html?post=content/data-engineering/phase-1-foundations/03-linux-and-shell.md) - Scripting, cron job và Git nâng cao.
+4. **Cơ sở dữ liệu**: [\[04\] Phase 1: Lập trình SQL nâng cao cho DE](reader.html?post=content/data-engineering/phase-1-foundations/04-sql-advanced.md) - Window functions, CTEs và tối ưu hóa truy vấn.
 
-### Phase 2: Data Storage (3-4 tuần)
-- ✅ Data Warehouse vs Data Lake vs Data Lakehouse
-- ✅ Data Modeling (Star schema, Snowflake schema, SCD)
-- ✅ Làm quen với Snowflake hoặc BigQuery (free tier)
-- ✅ NoSQL databases: khi nào dùng gì
+### Phase 2: Data Storage (Lưu trữ dữ liệu)
+1. **Mô hình hóa dữ liệu**: [\[05\] Phase 2: Thiết kế mô hình dữ liệu OLAP (Star/Snowflake)](reader.html?post=content/data-engineering/phase-2-data-storage/01-data-modeling-olap-oltp.md) - OLTP vs OLAP, Star/Snowflake Schema, SCD.
+2. **Cơ sở dữ liệu phi quan hệ**: [\[06\] Phase 2: NoSQL Databases cho Data Engineer](reader.html?post=content/data-engineering/phase-2-data-storage/02-nosql-databases.md) - Trường hợp sử dụng MongoDB, Redis, Cassandra.
+3. **Kiến trúc lưu trữ lớn**: [\[07\] Phase 2: Data Warehouse vs Data Lake vs Lakehouse](reader.html?post=content/data-engineering/phase-2-data-storage/03-data-warehouse-vs-data-lake.md) - Tiến hóa các mô hình lưu trữ lớn.
+4. **Hệ quản trị Cloud DWH**: [\[08\] Phase 2: So sánh Snowflake vs BigQuery vs Redshift](reader.html?post=content/data-engineering/phase-2-data-storage/04-snowflake-bigquery-redshift.md) - Phân tích kiến trúc, chi phí và hiệu năng.
 
-### Phase 3: Pipelines & Orchestration (4-6 tuần)
-- ✅ ETL vs ELT - tư duy pipeline
-- ✅ Apache Airflow (viết DAG đơn giản)
-- ✅ dbt (Data Build Tool) - industry standard
-- ✅ Data Quality & Testing
+### Phase 3: Pipelines & Orchestration (Xây dựng đường ống dữ liệu)
+1. **Tư duy thiết kế**: [\[09\] Phase 3: Tư duy thiết kế Pipeline (ETL vs ELT & CDC)](reader.html?post=content/data-engineering/phase-3-pipelines/01-etl-vs-elt.md) - So sánh Batch vs Streaming, Change Data Capture (CDC).
+2. **Điều phối quy trình**: [\[10\] Phase 3: Điều phối Pipeline với Apache Airflow](reader.html?post=content/data-engineering/phase-3-pipelines/02-apache-airflow.md) - Xây dựng DAGs, XComs và cơ chế điều phối.
+3. **Biến đổi dữ liệu**: [\[11\] Phase 3: Biến đổi dữ liệu thông minh với dbt](reader.html?post=content/data-engineering/phase-3-pipelines/03-dbt-data-build-tool.md) - SQL models, snapshots và testing tự động.
+4. **Kiểm soát chất lượng**: [\[12\] Phase 3: Data Quality & Monitoring](reader.html?post=content/data-engineering/phase-3-pipelines/04-data-quality.md) - Data Contracts và framework Great Expectations.
 
-### Phase 4: Big Data (4-6 tuần)
-- ✅ Distributed computing concepts
-- ✅ Apache Spark / PySpark
-- ✅ Apache Kafka (streaming)
+### Phase 4: Big Data (Xử lý dữ liệu lớn)
+1. **Khái niệm cốt lõi**: [\[13\] Phase 4: Hệ thống phân tán cho Data Engineer](reader.html?post=content/data-engineering/phase-4-big-data/01-distributed-computing-concepts.md) - MapReduce, CAP theorem, Serialization (Avro, Parquet).
+2. **Tính toán phân tán**: [\[14\] Phase 4: Xử lý dữ liệu lớn với Apache Spark](reader.html?post=content/data-engineering/phase-4-big-data/02-apache-spark.md) - RDD, DataFrame, Spark Catalyst và PySpark jobs.
+3. **Luồng dữ liệu thời gian thực**: [\[15\] Phase 4: Streaming Data với Apache Kafka](reader.html?post=content/data-engineering/phase-4-big-data/03-apache-kafka-streaming.md) - Topics, Partitions, Consumer Groups.
 
-### Phase 5: Cloud & Modern Stack (2-4 tuần)
-- ✅ AWS (S3, Glue, Redshift) hoặc GCP (BigQuery, Dataflow)
-- ✅ Docker cho DE
-- ✅ Data Governance & Security
+### Phase 5: Cloud, Containers & Governance (Công nghệ hiện đại)
+1. **Hạ tầng đám mây**: [\[16\] Phase 5: Dịch vụ Cloud (AWS/GCP) & Terraform IaC](reader.html?post=content/data-engineering/phase-5-cloud-and-modern/01-cloud-platforms-aws-gcp-azure.md) - Bản đồ dịch vụ Cloud và IaC.
+2. **Đóng gói & Điều phối**: [\[17\] Phase 5: Docker & Kubernetes cho Data Pipelines](reader.html?post=content/data-engineering/phase-5-cloud-and-modern/02-docker-kubernetes-for-de.md) - Triển khai compose local và Airflow/Spark trên K8s.
+3. **Quản trị dữ liệu**: [\[18\] Phase 5: Data Governance và Security](reader.html?post=content/data-engineering/phase-5-cloud-and-modern/03-data-governance-and-security.md) - Masking PII, phân quyền Row/Column, Data Lineage.
 
 ---
 

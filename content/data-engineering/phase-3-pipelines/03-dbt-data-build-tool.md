@@ -1,4 +1,4 @@
-# dbt (Data Build Tool): Transform Data bằng SQL
+# [11] Phase 3 - Pipelines: Biến đổi dữ liệu thông minh với dbt
 
 ## Giới thiệu
 
