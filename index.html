@@ -345,6 +345,12 @@
                 categoriesSection.style.display = 'block';
                 updateCategoryCounts(); // Cập nhật số lượng mỗi khi vào view kiến thức
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Cập nhật URL sạch không params khi về danh mục gốc
+                if (window.history.pushState) {
+                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+                }
             } else if (viewId === 'recent') {
                 recentSection.classList.remove('hidden');
                 
@@ -358,13 +364,23 @@
                         }
                     });
 
-                    // Cập nhật tiêu đề
+                    // Cập nhật tiêu đề và URL params
                     if (category === 'all') {
                         title.innerText = 'Tất cả bài viết';
                         label.innerText = 'Mới nhất';
+
+                        if (window.history.pushState) {
+                            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?view=recent&category=all";
+                            window.history.replaceState({ path: newUrl }, '', newUrl);
+                        }
                     } else {
                         title.innerText = 'Bài viết về ' + categoryName;
                         label.innerText = 'Danh mục';
+
+                        if (window.history.pushState) {
+                            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?view=recent&category=${category}&name=${encodeURIComponent(categoryName)}`;
+                            window.history.replaceState({ path: newUrl }, '', newUrl);
+                        }
                     }
                 }
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -380,6 +396,18 @@
         window.onload = () => {
             initPosts();
             updateCategoryCounts();
+
+            // Khôi phục trạng thái từ URL query parameters nếu có
+            const urlParams = new URLSearchParams(window.location.search);
+            const view = urlParams.get('view');
+            const category = urlParams.get('category');
+            const categoryName = urlParams.get('name');
+
+            if (view === 'recent' || category) {
+                showView('recent', category || 'all', categoryName || 'Tất cả bài viết');
+            } else {
+                showView('categories');
+            }
         };
     </script>
 </body>

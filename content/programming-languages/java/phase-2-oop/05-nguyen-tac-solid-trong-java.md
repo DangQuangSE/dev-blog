@@ -1,4 +1,4 @@
-# Nguyên tắc SOLID trong lập trình hướng đối tượng (Java)
+# [05] Phase 2 - OOP: Áp dụng 5 nguyên tắc SOLID trong Java
 
 **SOLID** không chỉ là một bộ quy tắc, nó là "triết lý thiết kế" giúp chuyển đổi code từ trạng thái "chạy được" sang trạng thái "chuyên nghiệp, linh hoạt và trường tồn".
 
