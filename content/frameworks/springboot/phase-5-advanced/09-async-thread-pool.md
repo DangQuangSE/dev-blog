@@ -1,4 +1,4 @@
-# Cấu hình Bất đồng bộ và Thread Pool trong Spring Boot
+# [09] Phase 5 - Advanced: Lập trình bất đồng bộ & Thread Pool
 
 Trong một ứng dụng Spring Boot hiện đại, việc xử lý các tác vụ tốn thời gian mà không làm gián đoạn luồng chính (Main Thread) là vô cùng quan trọng. Cơ chế `@Async` cung cấp giải pháp cho vấn đề này bằng cách chạy các tác vụ trong một luồng riêng biệt.
 

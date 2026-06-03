@@ -190,23 +190,100 @@ const BLOG_POSTS = [
     // === SPRING BOOT ===
     {
         category: "springboot",
-        date: "2026-05-04",
-        title: "Cấu hình Async và Thread Pool trong Spring Boot",
-        path: "content/frameworks/springboot/config/01-async-configuration.md",
-        description: "Hướng dẫn chi tiết cách cấu hình ThreadPoolTaskExecutor để tối ưu hóa xử lý bất đồng bộ và quản lý tài nguyên hiệu quả trong ứng dụng Spring Boot."
+        date: "2026-06-03",
+        title: "[00] Lộ trình học: Tổng Quan về Spring Boot",
+        path: "content/frameworks/springboot/00-overview.md",
+        description: "Tổng quan về hệ sinh thái Spring Boot, so sánh với Spring Framework truyền thống và lộ trình học chi tiết từ cơ bản đến nâng cao."
     },
     {
         category: "springboot",
-        date: "2026-05-03",
-        title: "Spring Core Essentials: Làm chủ IoC, DI và Bean Lifecycle",
-        path: "content/frameworks/springboot/02-spring-core-fundamentals.md",
-        description: "Khám phá các khái niệm nền tảng của Spring: Inversion of Control, Dependency Injection và vòng đời của một Bean trong IoC Container."
+        date: "2026-06-03",
+        title: "[01] Phase 1 - Foundations: Spring Framework & Spring Boot là gì?",
+        path: "content/frameworks/springboot/phase-1-foundations/01-introduction-to-spring.md",
+        description: "Tìm hiểu lịch sử tiến hóa từ J2EE sang Spring Framework, cơ chế Auto-Configuration, Starters và Embedded Web Server nhúng."
     },
     {
         category: "springboot",
-        date: "2026-05-03",
-        title: "Bảo mật Spring Boot: Hiểu rõ về IDOR và RBAC",
-        path: "content/frameworks/springboot/spring-security/01-idor-and-rbac.md",
-        description: "Tìm hiểu cách phòng chống lỗ hổng IDOR và triển khai cơ chế phân quyền RBAC/ABAC hiệu quả trong ứng dụng Spring Boot."
+        date: "2026-06-03",
+        title: "[02] Phase 1 - Foundations: Spring Core: IoC, DI & Bean Lifecycle",
+        path: "content/frameworks/springboot/phase-1-foundations/02-spring-core-fundamentals.md",
+        description: "Khám phá các khái niệm nền tảng của Spring: Inversion of Control (IoC), Dependency Injection (DI), Bean Lifecycle và Aspect Oriented Programming (AOP)."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[03] Phase 2 - REST APIs: Xây dựng RESTful API với Spring MVC",
+        path: "content/frameworks/springboot/phase-2-rest-apis/03-restful-api-spring-mvc.md",
+        description: "Xây dựng RESTful API chuẩn REST: Sự khác biệt giữa Controller và RestController, DTO Pattern và kiểm soát HTTP response với ResponseEntity."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[04] Phase 2 - REST APIs: Exception Handling & Validation trong Spring Boot",
+        path: "content/frameworks/springboot/phase-2-rest-apis/04-exception-handling-validation.md",
+        description: "Ràng buộc dữ liệu đầu vào bằng Jakarta Bean Validation (@Valid) và xử lý lỗi tập trung an toàn với RestControllerAdvice."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[05] Phase 3 - Data Access: Spring Data JPA & Hibernate Core",
+        path: "content/frameworks/springboot/phase-3-data-access/05-spring-data-jpa-hibernate.md",
+        description: "Tương tác cơ sở dữ liệu quan hệ bằng Spring Data JPA & Hibernate: Quản lý giao dịch với @Transactional và xử lý lỗi hiệu năng N+1 Query."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[06] Phase 3 - Data Access: Kết nối Database NoSQL với Spring Data MongoDB",
+        path: "content/frameworks/springboot/phase-3-data-access/06-spring-data-mongodb.md",
+        description: "Lưu trữ dữ liệu phi cấu trúc với MongoDB: So sánh nhúng (Embedded) và tham chiếu (Reference) cùng với cách sử dụng MongoRepository và MongoTemplate."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[07] Phase 4 - Security: Spring Security Architecture & Authentication Flow",
+        path: "content/frameworks/springboot/phase-4-security/07-spring-security-architecture.md",
+        description: "Hiểu sâu về cơ chế bảo mật của Spring Security: Kiến trúc Filter Chain, DelegatingFilterProxy và phân tích luồng xác thực chi tiết."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[08] Phase 4 - Security: Bảo mật nâng cao: IDOR, RBAC & JWT",
+        path: "content/frameworks/springboot/phase-4-security/08-idor-rbac-jwt.md",
+        description: "Ngăn chặn lỗ hổng IDOR, triển khai cơ chế phân quyền dựa trên vai trò (RBAC), thuộc tính (ABAC) và tích hợp JSON Web Token (JWT)."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[09] Phase 5 - Advanced: Lập trình bất đồng bộ & Thread Pool",
+        path: "content/frameworks/springboot/phase-5-advanced/09-async-thread-pool.md",
+        description: "Hướng dẫn cấu hình ThreadPoolTaskExecutor để xử lý bất đồng bộ (@Async) hiệu quả và tránh cạn kiệt tài nguyên hệ thống."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[10] Phase 5 - Advanced: Monitoring & Observability với Spring Boot Actuator",
+        path: "content/frameworks/springboot/phase-5-advanced/10-monitoring-actuator.md",
+        description: "Giám sát sức khỏe ứng dụng thời gian thực bằng Spring Boot Actuator, tích hợp Micrometer thu thập số liệu và hiển thị trên Grafana."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[11] Phase 6 - Testing: Unit Testing & Integration Testing với MockMvc",
+        path: "content/frameworks/springboot/phase-6-testing/11-unit-integration-testing.md",
+        description: "Phân biệt Unit Test và Integration Test: Sử dụng JUnit 5, Mockito và MockMvc giả lập Servlet để kiểm thử toàn diện luồng ứng dụng."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[12] Phase 6 - Testing: Containerized Testing với Testcontainers",
+        path: "content/frameworks/springboot/phase-6-testing/12-testcontainers.md",
+        description: "Sử dụng thư viện Testcontainers để chạy cơ sở dữ liệu PostgreSQL thực tế trong môi trường Docker giả lập lúc chạy kiểm thử tích hợp."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-03",
+        title: "[13] Phase 7 - Microservices: Kiến trúc Microservices với Spring Cloud",
+        path: "content/frameworks/springboot/phase-7-microservices/13-spring-cloud-microservices.md",
+        description: "Giới thiệu các thành phần thiết yếu để xây dựng hệ thống phân tán lớn: Service Discovery (Eureka), API Gateway và Config Server."
     }
 ];

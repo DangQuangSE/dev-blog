@@ -1,4 +1,4 @@
-# Bảo mật Spring Boot: Hiểu rõ về IDOR và RBAC
+# [08] Phase 4 - Security: Bảo mật nâng cao: IDOR, RBAC & JWT
 
 Bảo mật là một trong những phần quan trọng nhất nhưng cũng dễ bị bỏ qua trong quá trình phát triển ứng dụng. Bài viết này sẽ tập trung vào hai khái niệm bảo mật quan trọng: lỗ hổng IDOR và cơ chế phân quyền RBAC.
 
