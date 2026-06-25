@@ -1,4 +1,18 @@
 const BLOG_POSTS = [
+    {
+        category: "springboot",
+        date: "2026-06-25",
+        title: "Setup chuẩn ApiResponse và Pagination cho Spring Boot (aptis-api)",
+        path: "content/frameworks/springboot/project-setup/01-api-response-setup.md",
+        description: "Hướng dẫn chi tiết cách thiết lập ApiResponse envelope thống nhất và tích hợp metadata phân trang PageMeta, tự động wrap response qua ResponseBodyAdvice."
+    },
+    {
+        category: "springboot",
+        date: "2026-06-25",
+        title: "Setup Common Exception và Request Filter cho Spring Boot (aptis-api)",
+        path: "content/frameworks/springboot/project-setup/02-common-exception-setup.md",
+        description: "Xây dựng hệ thống quản lý lỗi tập trung với @RestControllerAdvice, custom ApiException, ErrorCode enum và theo dõi luồng request thông qua RequestIdFilter (MDC) & RequestLoggingFilter."
+    },
     // === DATA ENGINEERING ===
     {
         category: "data-engineering",
