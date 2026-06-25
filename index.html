@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>CORNDEVs | Personal Tech Knowledge Base</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
     <script src="posts.js?v=2"></script>
     <script>
@@ -14,7 +14,17 @@
             theme: {
                 extend: {
                     colors: {
-                        "background": "#0b1326",
+                        "background": "hsl(var(--background))",
+                        "foreground": "hsl(var(--foreground))",
+                        "muted-foreground": "hsl(var(--muted-foreground))",
+                        "primary": "hsl(var(--primary))",
+                        "on-primary": "hsl(var(--primary-foreground))",
+                        "secondary": "hsl(var(--secondary))",
+                        "muted": "hsl(var(--muted))",
+                        "accent": "hsl(var(--accent))",
+                        "border": "hsl(var(--border))",
+                        "input": "hsl(var(--input))",
+                        
                         "surface": "#0b1326",
                         "surface-dim": "#0b1326",
                         "surface-bright": "#31394d",
@@ -27,17 +37,15 @@
                         "on-surface-variant": "#c2c6d6",
                         "outline": "#8c909f",
                         "outline-variant": "#424754",
-                        "primary": "#adc6ff",
-                        "on-primary": "#002e6a",
                         "primary-container": "#4d8eff",
                         "on-primary-container": "#00285d",
-                        "secondary": "#c0c1ff",
                         "tertiary": "#ffb786",
                     },
                     fontFamily: {
                         sans: ["Inter", "sans-serif"],
                         mono: ["monospace"],
                         label: ["Space Grotesk", "sans-serif"],
+                        display: ["'Instrument Serif'", "serif"],
                     },
                     borderRadius: {
                         "sm": "0.125rem",
@@ -51,9 +59,21 @@
         };
     </script>
     <style>
+        :root {
+            --background: 201 100% 13%;
+            --foreground: 0 0% 100%;
+            --muted-foreground: 240 4% 66%;
+            --primary: 0 0% 100%;
+            --primary-foreground: 0 0% 4%;
+            --secondary: 0 0% 10%;
+            --muted: 0 0% 10%;
+            --accent: 0 0% 10%;
+            --border: 0 0% 18%;
+            --input: 0 0% 18%;
+        }
         body {
-            background-color: #0b1326;
-            color: #dae2fd;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
@@ -83,37 +103,106 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #8c909f;
         }
+
+        /* Liquid Glass Effect */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.01);
+            background-blend-mode: luminosity;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: none;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.4px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+                rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+                rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @keyframes fade-rise {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-rise { animation: fade-rise 0.8s ease-out both; }
+        .animate-fade-rise-delay { animation: fade-rise 0.8s ease-out 0.2s both; }
+        .animate-fade-rise-delay-2 { animation: fade-rise 0.8s ease-out 0.4s both; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
     <!-- Header -->
-    <header class="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-outline-variant">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black/10 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-                    <span class="text-on-primary font-bold text-xl">C</span>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-on-surface">CORNDEVs</span>
+                <a href="index.html" style="font-family: 'Instrument Serif', serif;" class="text-3xl tracking-tight text-foreground">
+                    CORNDEVs<sup class="text-xs">®</sup>
+                </a>
             </div>
             
             <nav class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Trang chủ</a>
-                <a href="javascript:void(0)" onclick="showView('categories')" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Kiến thức</a>
-                <a href="javascript:void(0)" onclick="showView('recent', 'all')" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Bài viết</a>
+                <a href="index.html" class="text-sm font-medium text-foreground transition-colors">Trang chủ</a>
+                <a href="javascript:void(0)" onclick="showView('categories')" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Kiến thức</a>
+                <a href="javascript:void(0)" onclick="showView('recent', 'all')" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Bài viết</a>
             </nav>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-6">
+                <!-- Search bar -->
                 <div class="relative group">
-                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm group-focus-within:text-primary transition-colors">search</span>
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm group-focus-within:text-foreground transition-colors">search</span>
                     <input type="text" id="search-input" placeholder="Tìm bài viết..." 
-                        class="bg-surface-container border border-outline-variant rounded-full py-2 pl-10 pr-4 text-xs w-40 md:w-48 focus:w-64 focus:outline-none focus:border-primary transition-all duration-300 placeholder:text-outline"
+                        class="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-xs w-40 md:w-48 focus:w-64 focus:outline-none focus:border-white/30 transition-all duration-300 placeholder:text-muted-foreground text-foreground"
                         oninput="handleSearch(this.value)">
                 </div>
+                <!-- Begin Journey button -->
+                <button onclick="document.getElementById('categories').scrollIntoView({ behavior: 'smooth' })" class="liquid-glass rounded-full px-6 py-2.5 text-sm text-foreground hover:scale-[1.03] transition-all duration-300">
+                    Begin Journey
+                </button>
             </div>
         </div>
     </header>
 
     <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="hero" class="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center text-center px-6">
+            <!-- Video Background -->
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Overlay for contrast and transition -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/25 to-[#002742] z-0"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col items-center justify-center max-w-5xl mx-auto px-6">
+                <!-- Title -->
+                <h1 style="font-family: 'Instrument Serif', serif;" class="animate-fade-rise text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] font-normal text-foreground">
+                    Where <em class="not-italic text-muted-foreground">dreams</em> rise <br class="hidden md:inline" />
+                    <em class="not-italic text-muted-foreground">through the silence.</em>
+                </h1>
+                
+                <!-- Subtext -->
+                <p class="animate-fade-rise-delay text-muted-foreground text-base sm:text-lg max-w-2xl mt-8 leading-relaxed">
+                    Nơi chia sẻ kiến thức chuyên sâu về công nghệ và lập trình. Giữa thế giới số không ngừng chuyển động, chúng tôi tạo dựng không gian tĩnh lặng cho tư duy đột phá và những dòng code truyền cảm hứng.
+                </p>
+                
+                <!-- Hero CTA Button -->
+                <button onclick="document.getElementById('categories').scrollIntoView({ behavior: 'smooth' })" class="animate-fade-rise-delay-2 liquid-glass rounded-full px-14 py-5 text-base text-foreground mt-12 hover:scale-[1.03] transition-all duration-300 cursor-pointer">
+                    Begin Journey
+                </button>
+            </div>
+        </section>
 
 
         <!-- Categories Grid -->
@@ -303,6 +392,13 @@
             } else {
                 title.innerText = `Kết quả cho "${query}"`;
                 label.innerText = `Tìm thấy ${foundCount} bài viết`;
+                
+                // Scroll to search results if we are still at the top hero section
+                if (window.scrollY < window.innerHeight - 100) {
+                    requestAnimationFrame(() => {
+                        recentSection.scrollIntoView({ behavior: 'smooth' });
+                    });
+                }
             }
         }
 
@@ -330,7 +426,7 @@
             });
         }
 
-        function showView(viewId, category = null, categoryName = null) {
+        function showView(viewId, category = null, categoryName = null, scroll = true) {
             const categoriesSection = document.getElementById('categories');
             const recentSection = document.getElementById('recent');
             const cards = document.querySelectorAll('.post-card');
@@ -344,7 +440,11 @@
             if (viewId === 'categories') {
                 categoriesSection.style.display = 'block';
                 updateCategoryCounts(); // Cập nhật số lượng mỗi khi vào view kiến thức
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (scroll) {
+                    categoriesSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0 });
+                }
 
                 // Cập nhật URL sạch không params khi về danh mục gốc
                 if (window.history.pushState) {
@@ -383,7 +483,11 @@
                         }
                     }
                 }
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (scroll) {
+                    recentSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0 });
+                }
             }
         }
 
@@ -404,9 +508,9 @@
             const categoryName = urlParams.get('name');
 
             if (view === 'recent' || category) {
-                showView('recent', category || 'all', categoryName || 'Tất cả bài viết');
+                showView('recent', category || 'all', categoryName || 'Tất cả bài viết', false);
             } else {
-                showView('categories');
+                showView('categories', null, null, false);
             }
         };
     </script>
