@@ -1,0 +1,274 @@
+<!doctype html>
+<html class="dark" lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kiến thức | CORNDEVs</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
+      rel="stylesheet"
+    />
+    <link href="assets/ambient-reveal.css" rel="stylesheet" />
+    <script src="assets/ambient-reveal.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              "muted-foreground": "hsl(var(--muted-foreground))",
+              primary: "hsl(var(--primary))",
+              "on-primary": "hsl(var(--primary-foreground))",
+              secondary: "hsl(var(--secondary))",
+              muted: "hsl(var(--muted))",
+              accent: "hsl(var(--accent))",
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+
+              surface: "#0b1326",
+              "surface-dim": "#0b1326",
+              "surface-bright": "#31394d",
+              "surface-container-lowest": "#060e20",
+              "surface-container-low": "#131b2e",
+              "surface-container": "#171f33",
+              "surface-container-high": "#222a3d",
+              "surface-container-highest": "#2d3449",
+              "on-surface": "#dae2fd",
+              "on-surface-variant": "#c2c6d6",
+              outline: "#8c909f",
+              "outline-variant": "#424754",
+              "primary-container": "#4d8eff",
+              "on-primary-container": "#00285d",
+              tertiary: "#ffb786",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["monospace"],
+              label: ["Space Grotesk", "sans-serif"],
+              display: ["'Instrument Serif'", "serif"],
+            },
+            borderRadius: {
+              sm: "0.125rem",
+              DEFAULT: "0.25rem",
+              md: "0.375rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --background: 201 100% 13%;
+        --foreground: 0 0% 100%;
+        --muted-foreground: 240 4% 66%;
+        --primary: 0 0% 100%;
+        --primary-foreground: 0 0% 4%;
+        --secondary: 0 0% 10%;
+        --muted: 0 0% 10%;
+        --accent: 0 0% 10%;
+        --border: 0 0% 18%;
+        --input: 0 0% 18%;
+      }
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .technical-border {
+        border: 1px solid #424754;
+      }
+      .technical-border-hover:hover {
+        border-color: #adc6ff;
+        transition: border-color 0.3s ease;
+      }
+      .label-text {
+        font-family: "Space Grotesk", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #060e20;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #424754;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #8c909f;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col antialiased">
+    <div id="ambient-bg"></div>
+
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 w-full bg-black/10 backdrop-blur-md border-b border-white/5"
+    >
+      <div
+        class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-2">
+          <a
+            href="index.html"
+            style="font-family: &quot;Instrument Serif&quot;, serif"
+            class="text-3xl tracking-tight text-foreground"
+          >
+            CORNDEVs<sup class="text-xs">®</sup>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            href="index.html"
+            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >Trang chủ</a
+          >
+          <a
+            href="knowledge.html"
+            class="text-sm font-medium text-foreground transition-colors"
+            >Kiến thức</a
+          >
+          <a
+            href="posts.html?category=all"
+            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >Bài viết</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-6">
+          <a
+            href="index.html"
+            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+          >
+            <span class="material-symbols-outlined !text-sm">arrow_back</span>
+            Về trang chủ
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow py-24 px-6">
+      <div
+        class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+      >
+        <!-- Programming Languages -->
+        <div class="space-y-6" data-reveal-up>
+          <div
+            class="flex items-center justify-between border-b border-outline-variant pb-4"
+          >
+            <h2 class="text-2xl font-bold text-on-surface">Ngôn ngữ</h2>
+            <span class="material-symbols-outlined text-primary-container"
+              >terminal</span
+            >
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            <a
+              href="posts.html?category=java&name=Java"
+              class="technical-border technical-border-hover p-4 rounded-lg glass-card group"
+            >
+              <span
+                class="label-text text-[10px] text-on-surface-variant group-hover:text-primary-container"
+                >01</span
+              >
+              <h3 class="font-bold text-on-surface mt-1">Java</h3>
+            </a>
+          </div>
+        </div>
+
+        <!-- Frameworks -->
+        <div class="space-y-6" data-reveal-up>
+          <div
+            class="flex items-center justify-between border-b border-outline-variant pb-4"
+          >
+            <h2 class="text-2xl font-bold text-on-surface">Frameworks</h2>
+            <span class="material-symbols-outlined text-secondary">layers</span>
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            <a
+              href="posts.html?category=springboot&name=Spring+Boot"
+              class="technical-border technical-border-hover p-4 rounded-lg glass-card group"
+            >
+              <span
+                class="label-text text-[10px] text-on-surface-variant group-hover:text-secondary"
+                >01</span
+              >
+              <h3 class="font-bold text-on-surface mt-1">Spring Boot</h3>
+            </a>
+          </div>
+        </div>
+
+        <!-- DSA -->
+        <div class="space-y-6" data-reveal-up>
+          <div
+            class="flex items-center justify-between border-b border-outline-variant pb-4"
+          >
+            <h2 class="text-2xl font-bold text-on-surface">DSA</h2>
+            <span class="material-symbols-outlined text-tertiary"
+              >account_tree</span
+            >
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            <a
+              href="posts.html?category=data-structures&name=C%E1%BA%A5u+tr%C3%BAc+d%E1%BB%AF+li%E1%BB%87u"
+              class="technical-border technical-border-hover p-4 rounded-lg glass-card group"
+            >
+              <span
+                class="label-text text-[10px] text-on-surface-variant group-hover:text-tertiary"
+                >00</span
+              >
+              <h3 class="font-bold text-on-surface mt-1">Cấu trúc dữ liệu</h3>
+            </a>
+            <a
+              href="posts.html?category=algorithms&name=Gi%E1%BA%A3i+thu%E1%BA%ADt"
+              class="technical-border technical-border-hover p-4 rounded-lg glass-card group"
+            >
+              <span
+                class="label-text text-[10px] text-on-surface-variant group-hover:text-tertiary"
+                >00</span
+              >
+              <h3 class="font-bold text-on-surface mt-1">Giải thuật</h3>
+            </a>
+          </div>
+        </div>
+
+        <!-- Data Engineering -->
+        <div class="space-y-6" data-reveal-up>
+          <div
+            class="flex items-center justify-between border-b border-outline-variant pb-4"
+          >
+            <h2 class="text-2xl font-bold text-on-surface">Data Engineering</h2>
+            <span class="material-symbols-outlined text-primary-container"
+              >analytics</span
+            >
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            <a
+              href="posts.html?category=data-engineering&name=Data+Engineering"
+              class="technical-border technical-border-hover p-4 rounded-lg glass-card group"
+            >
+              <span
+                class="label-text text-[10px] text-on-surface-variant group-hover:text-primary-container"
+                >00</span
+              >
+              <h3 class="font-bold text-on-surface mt-1">Data Engineering</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

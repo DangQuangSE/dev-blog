@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Bài viết | CORNDEVs</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+    <link href="assets/ambient-reveal.css" rel="stylesheet"/>
+    <script src="posts.js?v=2"></script>
+    <script src="assets/ambient-reveal.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "hsl(var(--background))",
+                        "foreground": "hsl(var(--foreground))",
+                        "muted-foreground": "hsl(var(--muted-foreground))",
+                        "primary": "hsl(var(--primary))",
+                        "on-primary": "hsl(var(--primary-foreground))",
+                        "secondary": "hsl(var(--secondary))",
+                        "muted": "hsl(var(--muted))",
+                        "accent": "hsl(var(--accent))",
+                        "border": "hsl(var(--border))",
+                        "input": "hsl(var(--input))",
+
+                        "surface": "#0b1326",
+                        "surface-dim": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6",
+                        "outline": "#8c909f",
+                        "outline-variant": "#424754",
+                        "primary-container": "#4d8eff",
+                        "on-primary-container": "#00285d",
+                        "tertiary": "#ffb786",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        mono: ["monospace"],
+                        label: ["Space Grotesk", "sans-serif"],
+                        display: ["'Instrument Serif'", "serif"],
+                    },
+                    borderRadius: {
+                        "sm": "0.125rem",
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        :root {
+            --background: 201 100% 13%;
+            --foreground: 0 0% 100%;
+            --muted-foreground: 240 4% 66%;
+            --primary: 0 0% 100%;
+            --primary-foreground: 0 0% 4%;
+            --secondary: 0 0% 10%;
+            --muted: 0 0% 10%;
+            --accent: 0 0% 10%;
+            --border: 0 0% 18%;
+            --input: 0 0% 18%;
+        }
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .technical-border { border: 1px solid #424754; }
+        .technical-border-hover:hover { border-color: #adc6ff; transition: border-color 0.3s ease; }
+        .label-text { font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #060e20; }
+        ::-webkit-scrollbar-thumb { background: #424754; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8c909f; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+    <div id="ambient-bg"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-black/10 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <a href="index.html" style="font-family: 'Instrument Serif', serif;" class="text-3xl tracking-tight text-foreground">
+                    CORNDEVs<sup class="text-xs">®</sup>
+                </a>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Trang chủ</a>
+                <a href="knowledge.html" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Kiến thức</a>
+                <a href="posts.html" class="text-sm font-medium text-foreground transition-colors">Bài viết</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div class="relative group">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm group-focus-within:text-foreground transition-colors">search</span>
+                    <input type="text" id="search-input" placeholder="Tìm bài viết..."
+                        class="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-xs w-40 md:w-48 focus:w-64 focus:outline-none focus:border-white/30 transition-all duration-300 placeholder:text-muted-foreground text-foreground"
+                        oninput="handleSearch(this.value)">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-24 px-6">
+        <div class="max-w-5xl mx-auto space-y-12">
+            <div class="flex items-end justify-between" data-reveal-up>
+                <div>
+                    <span id="posts-label" class="label-text text-primary-container text-[10px] font-bold">Mới nhất</span>
+                    <h1 id="posts-title" class="text-3xl font-bold text-foreground mt-2">Tất cả bài viết</h1>
+                </div>
+            </div>
+            <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </div>
+    </main>
+
+    <script>
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const parts = dateStr.split('-');
+            if (parts.length !== 3) return dateStr;
+            const year = parts[0];
+            const month = parseInt(parts[1], 10);
+            const day = parseInt(parts[2], 10);
+            return `${day < 10 ? '0' + day : day} THÁNG ${month}, ${year}`;
+        }
+
+        async function updateReadingTime(path, elementId) {
+            try {
+                const response = await fetch(path);
+                if (!response.ok) throw new Error();
+                const text = await response.text();
+                const words = text.trim().split(/\s+/).length;
+                const minutes = Math.ceil(words / 200);
+                const target = document.getElementById(elementId);
+                if (target) target.innerText = `${minutes} PHÚT ĐỌC`;
+            } catch (e) {
+                const target = document.getElementById(elementId);
+                if (target) {
+                    const est = Math.max(8, Math.min(15, Math.ceil(path.length % 7) + 8));
+                    target.innerText = `${est} PHÚT ĐỌC`;
+                }
+            }
+        }
+
+        function initPosts() {
+            const grid = document.getElementById('posts-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            BLOG_POSTS.forEach((post, index) => {
+                const article = document.createElement('article');
+                article.setAttribute('data-category', post.category);
+                article.setAttribute('data-reveal-up', '');
+                article.className = 'post-card technical-border glass-card rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300';
+
+                const spanId = `readtime-${index}`;
+
+                article.innerHTML = `
+                    <div class="p-6 space-y-4 flex-grow flex flex-col">
+                        <div class="flex items-center gap-2 text-muted-foreground text-[10px] font-mono">
+                            <span>${formatDate(post.date)}</span>
+                            <span>•</span>
+                            <span id="${spanId}">TÍNH TOÁN...</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground leading-tight hover:text-primary-container transition-colors">
+                            <a href="reader.html?post=${post.path}">${post.title}</a>
+                        </h3>
+                        <p class="text-muted-foreground text-sm line-clamp-3">
+                            ${post.description}
+                        </p>
+                        <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
+                                <span class="text-[10px] font-mono text-muted-foreground uppercase">Admin</span>
+                            </div>
+                            <span class="material-symbols-outlined text-muted-foreground text-lg">bookmark</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(article);
+
+                updateReadingTime(post.path, spanId);
+            });
+
+            initAmbientReveal(grid);
+        }
+
+        function applyFilter(category, categoryName) {
+            const cards = document.querySelectorAll('.post-card');
+            const title = document.getElementById('posts-title');
+            const label = document.getElementById('posts-label');
+
+            cards.forEach((card) => {
+                card.style.display = (!category || category === 'all' || card.getAttribute('data-category') === category) ? 'flex' : 'none';
+            });
+
+            if (!category || category === 'all') {
+                title.innerText = 'Tất cả bài viết';
+                label.innerText = 'Mới nhất';
+            } else {
+                title.innerText = 'Bài viết về ' + (categoryName || category);
+                label.innerText = 'Danh mục';
+            }
+        }
+
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            const cards = document.querySelectorAll('.post-card');
+            const title = document.getElementById('posts-title');
+            const label = document.getElementById('posts-label');
+
+            let foundCount = 0;
+            cards.forEach((card) => {
+                const titleText = card.querySelector('h3').innerText.toLowerCase();
+                const descText = card.querySelector('p').innerText.toLowerCase();
+                const category = card.getAttribute('data-category').toLowerCase();
+
+                if (titleText.includes(q) || descText.includes(q) || category.includes(q)) {
+                    card.style.display = 'flex';
+                    foundCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (q === '') {
+                title.innerText = 'Tất cả bài viết';
+                label.innerText = 'Mới nhất';
+            } else {
+                title.innerText = `Kết quả cho "${query}"`;
+                label.innerText = `Tìm thấy ${foundCount} bài viết`;
+            }
+        }
+
+        window.onload = () => {
+            initPosts();
+            const urlParams = new URLSearchParams(window.location.search);
+            applyFilter(urlParams.get('category'), urlParams.get('name'));
+        };
+    </script>
+</body>
+</html>

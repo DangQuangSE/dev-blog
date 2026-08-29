@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link href="assets/ambient-reveal.css" rel="stylesheet"/>
+    <script src="assets/ambient-reveal.js"></script>
 
     <script>
         tailwind.config = {
@@ -96,6 +98,8 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
+    <div id="ambient-bg"></div>
+
     <!-- Header -->
     <header class="sticky top-0 z-50 w-full bg-black/10 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
@@ -144,6 +148,52 @@
     </div>
 
     <script>
+        function groupContentBlocks(contentEl) {
+            const STANDALONE = ['h1', 'pre', 'blockquote', 'img'];
+            const children = Array.from(contentEl.children);
+            const groups = [];
+            let current = [];
+
+            children.forEach((child) => {
+                const tag = child.tagName.toLowerCase();
+
+                if (tag === 'h2') {
+                    if (current.length) groups.push(current);
+                    current = [child];
+                } else if (STANDALONE.includes(tag)) {
+                    if (current.length) groups.push(current);
+                    current = [];
+                    groups.push([child]);
+                } else {
+                    current.push(child);
+                }
+            });
+            if (current.length) groups.push(current);
+
+            // Gộp các nhóm "mồ côi" (không chứa heading/pre/blockquote/img neo) vào nhóm liền kề,
+            // tránh trường hợp 1 đoạn <p> xen giữa 2 blockquote liên tiếp bị tách thành nhóm riêng.
+            for (let i = groups.length - 1; i >= 0; i--) {
+                const hasAnchor = groups[i].some((el) => STANDALONE.includes(el.tagName.toLowerCase()) || el.tagName.toLowerCase() === 'h2');
+                if (hasAnchor) continue;
+                if (i < groups.length - 1) {
+                    groups[i + 1] = groups[i].concat(groups[i + 1]);
+                } else if (i > 0) {
+                    groups[i - 1] = groups[i - 1].concat(groups[i]);
+                } else {
+                    continue;
+                }
+                groups.splice(i, 1);
+            }
+
+            contentEl.innerHTML = '';
+            groups.forEach((group) => {
+                const wrapper = document.createElement('div');
+                wrapper.setAttribute('data-reveal-up', '');
+                group.forEach((el) => wrapper.appendChild(el));
+                contentEl.appendChild(wrapper);
+            });
+        }
+
         async function loadMarkdown() {
             const urlParams = new URLSearchParams(window.location.search);
             const postPath = urlParams.get('post');
@@ -179,7 +229,11 @@
                 });
 
                 contentEl.innerHTML = marked.parse(markdown);
-                
+
+                // Nhóm nội dung thành từng block lớn để reveal-up (không animate từng <p> lẻ)
+                groupContentBlocks(contentEl);
+                initAmbientReveal(contentEl);
+
                 // Highlight code blocks
                 document.querySelectorAll('pre code').forEach((block) => {
                     hljs.highlightElement(block);
