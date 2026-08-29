@@ -1,0 +1,41 @@
+#ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: #0b1326;
+}
+
+#ambient-bg video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#ambient-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 19, 38, 0.78);
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(48px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-up {
+    transition:
+      opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+      transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

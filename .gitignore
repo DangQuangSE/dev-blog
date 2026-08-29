@@ -20,3 +20,7 @@ stitch_downloads/
 .temp/
 dist/
 build/
+
+.claude
+.plans/*
+plans/

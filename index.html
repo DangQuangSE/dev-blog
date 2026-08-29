@@ -7,7 +7,9 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+    <link href="assets/ambient-reveal.css" rel="stylesheet"/>
     <script src="posts.js?v=2"></script>
+    <script src="assets/ambient-reveal.js"></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -142,6 +144,8 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
+    <div id="ambient-bg"></div>
+
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-black/10 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
@@ -180,7 +184,7 @@
             <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
                 <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
             </video>
-            
+
             <!-- Overlay for contrast and transition -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/25 to-[#002742] z-0"></div>
             
@@ -209,7 +213,7 @@
         <section id="categories" class="py-24 px-6 bg-surface-container-lowest flex-grow">
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Programming Languages -->
-                <div id="languages" class="space-y-6">
+                <div id="languages" class="space-y-6" data-reveal-up>
                     <div class="flex items-center justify-between border-b border-outline-variant pb-4">
                         <h2 class="text-2xl font-bold text-on-surface">Ngôn ngữ</h2>
                         <span class="material-symbols-outlined text-primary">terminal</span>
@@ -223,7 +227,7 @@
                 </div>
 
                 <!-- Frameworks -->
-                <div id="frameworks" class="space-y-6">
+                <div id="frameworks" class="space-y-6" data-reveal-up>
                     <div class="flex items-center justify-between border-b border-outline-variant pb-4">
                         <h2 class="text-2xl font-bold text-on-surface">Frameworks</h2>
                         <span class="material-symbols-outlined text-secondary">layers</span>
@@ -237,7 +241,7 @@
                 </div>
 
                 <!-- DSA -->
-                <div id="dsa" class="space-y-6">
+                <div id="dsa" class="space-y-6" data-reveal-up>
                     <div class="flex items-center justify-between border-b border-outline-variant pb-4">
                         <h2 class="text-2xl font-bold text-on-surface">DSA</h2>
                         <span class="material-symbols-outlined text-tertiary">account_tree</span>
@@ -255,7 +259,7 @@
                 </div>
 
                 <!-- Data Engineering -->
-                <div id="data-engineering" class="space-y-6">
+                <div id="data-engineering" class="space-y-6" data-reveal-up>
                     <div class="flex items-center justify-between border-b border-outline-variant pb-4">
                         <h2 class="text-2xl font-bold text-on-surface">Data Engineering</h2>
                         <span class="material-symbols-outlined text-primary">analytics</span>
@@ -326,6 +330,7 @@
             BLOG_POSTS.forEach((post, index) => {
                 const article = document.createElement('article');
                 article.setAttribute('data-category', post.category);
+                article.setAttribute('data-reveal-up', '');
                 article.className = 'post-card technical-border bg-surface-container rounded-xl overflow-hidden flex flex-col technical-border-hover transition-all duration-300';
                 
                 const spanId = `readtime-${index}`;
@@ -357,6 +362,8 @@
                 // Gọi bất đồng bộ tính toán thời gian đọc thật
                 updateReadingTime(post.path, spanId);
             });
+
+            initAmbientReveal(grid);
         }
 
         function handleSearch(query) {
