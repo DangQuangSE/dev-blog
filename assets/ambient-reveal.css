@@ -4,15 +4,7 @@
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: #0b1326;
-}
-
-#ambient-bg video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: #0b1326 url('ambient-poster.jpeg') center / cover no-repeat;
 }
 
 #ambient-bg::after {
@@ -41,7 +33,5 @@
 }
 
 .glass-card {
-  background: rgba(23, 31, 51, 0.55) !important;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  background: rgba(15, 22, 41, 0.82) !important;
 }
