@@ -1,121 +1,49 @@
 <!DOCTYPE html>
-<html class="dark" lang="vi">
+<html lang="vi">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Bài viết | CORNDEVs</title>
+    <script src="assets/theme.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+    <link href="assets/theme.css" rel="stylesheet"/>
     <link href="assets/ambient-reveal.css" rel="stylesheet"/>
     <script src="posts.js?v=2"></script>
     <script src="assets/ambient-reveal.js"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "background": "hsl(var(--background))",
-                        "foreground": "hsl(var(--foreground))",
-                        "muted-foreground": "hsl(var(--muted-foreground))",
-                        "primary": "hsl(var(--primary))",
-                        "on-primary": "hsl(var(--primary-foreground))",
-                        "secondary": "hsl(var(--secondary))",
-                        "muted": "hsl(var(--muted))",
-                        "accent": "hsl(var(--accent))",
-                        "border": "hsl(var(--border))",
-                        "input": "hsl(var(--input))",
-
-                        "surface": "#0b1326",
-                        "surface-dim": "#0b1326",
-                        "surface-bright": "#31394d",
-                        "surface-container-lowest": "#060e20",
-                        "surface-container-low": "#131b2e",
-                        "surface-container": "#171f33",
-                        "surface-container-high": "#222a3d",
-                        "surface-container-highest": "#2d3449",
-                        "on-surface": "#dae2fd",
-                        "on-surface-variant": "#c2c6d6",
-                        "outline": "#8c909f",
-                        "outline-variant": "#424754",
-                        "primary-container": "#4d8eff",
-                        "on-primary-container": "#00285d",
-                        "tertiary": "#ffb786",
-                    },
-                    fontFamily: {
-                        sans: ["Inter", "sans-serif"],
-                        mono: ["monospace"],
-                        label: ["Space Grotesk", "sans-serif"],
-                        display: ["'Instrument Serif'", "serif"],
-                    },
-                    borderRadius: {
-                        "sm": "0.125rem",
-                        "DEFAULT": "0.25rem",
-                        "md": "0.375rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                    },
-                },
-            },
-        };
-    </script>
+    <script src="assets/tailwind-config.js"></script>
+    <script src="assets/site-header.js"></script>
     <style>
-        :root {
-            --background: 201 100% 13%;
-            --foreground: 0 0% 100%;
-            --muted-foreground: 240 4% 66%;
-            --primary: 0 0% 100%;
-            --primary-foreground: 0 0% 4%;
-            --secondary: 0 0% 10%;
-            --muted: 0 0% 10%;
-            --accent: 0 0% 10%;
-            --border: 0 0% 18%;
-            --input: 0 0% 18%;
-        }
         body {
             background-color: hsl(var(--background));
             color: hsl(var(--foreground));
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        .technical-border { border: 1px solid #424754; }
-        .technical-border-hover:hover { border-color: #adc6ff; transition: border-color 0.3s ease; }
+        .technical-border { border: 1px solid var(--outline-variant); }
+        .technical-border-hover:hover { border-color: var(--heading-accent); transition: border-color 0.3s ease; }
         .label-text { font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #060e20; }
-        ::-webkit-scrollbar-thumb { background: #424754; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #8c909f; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
     <div id="ambient-bg"></div>
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 w-full bg-black/10 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <a href="index.html" style="font-family: 'Instrument Serif', serif;" class="text-3xl tracking-tight text-foreground">
-                    CORNDEVs<sup class="text-xs">®</sup>
-                </a>
-            </div>
-
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Trang chủ</a>
-                <a href="knowledge.html" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Kiến thức</a>
-                <a href="posts.html" class="text-sm font-medium text-foreground transition-colors">Bài viết</a>
-            </nav>
-
-            <div class="flex items-center gap-4">
-                <div class="relative group">
-                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm group-focus-within:text-foreground transition-colors">search</span>
-                    <input type="text" id="search-input" placeholder="Tìm bài viết..."
-                        class="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-xs w-40 md:w-48 focus:w-64 focus:outline-none focus:border-white/30 transition-all duration-300 placeholder:text-muted-foreground text-foreground"
-                        oninput="handleSearch(this.value)">
-                </div>
-            </div>
-        </div>
-    </header>
+    <div id="site-header" data-active="posts"></div>
+    <script>
+        SiteHeader.init({
+            active: 'posts',
+            extra: '<div class="relative group">' +
+                '<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm group-focus-within:text-foreground transition-colors">search</span>' +
+                '<input type="text" id="search-input" placeholder="Tìm bài viết..." class="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full py-2 pl-10 pr-4 text-xs w-40 md:w-48 focus:w-64 focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-all duration-300 placeholder:text-muted-foreground text-foreground" oninput="handleSearch(this.value)">' +
+                '</div>'
+        });
+    </script>
 
     <main class="flex-grow py-24 px-6">
         <div class="max-w-5xl mx-auto space-y-12">
@@ -184,7 +112,7 @@
                         <p class="text-muted-foreground text-sm line-clamp-3">
                             ${post.description}
                         </p>
-                        <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10">
+                        <div class="mt-auto pt-4 flex items-center justify-between border-t border-black/10 dark:border-white/10">
                             <div class="flex items-center gap-2">
                                 <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold">C</div>
                                 <span class="text-[10px] font-mono text-muted-foreground uppercase">Admin</span>
