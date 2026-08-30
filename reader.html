@@ -1,123 +1,58 @@
 <!DOCTYPE html>
-<html class="dark" lang="vi">
+<html lang="vi">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Đọc bài viết | CORNDEVs</title>
+    <script src="assets/theme.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
-    
+
     <!-- Markdown & Syntax Highlighting -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link id="hljs-theme-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <link id="hljs-theme-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link href="assets/theme.css" rel="stylesheet"/>
     <link href="assets/ambient-reveal.css" rel="stylesheet"/>
     <script src="assets/ambient-reveal.js"></script>
-
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "background": "hsl(var(--background))",
-                        "foreground": "hsl(var(--foreground))",
-                        "muted-foreground": "hsl(var(--muted-foreground))",
-                        "primary": "hsl(var(--primary))",
-                        "on-primary": "hsl(var(--primary-foreground))",
-                        "secondary": "hsl(var(--secondary))",
-                        "muted": "hsl(var(--muted))",
-                        "accent": "hsl(var(--accent))",
-                        "border": "hsl(var(--border))",
-                        "input": "hsl(var(--input))",
-                        
-                        "surface": "#0b1326",
-                        "surface-dim": "#0b1326",
-                        "surface-bright": "#31394d",
-                        "surface-container-lowest": "#060e20",
-                        "surface-container-low": "#131b2e",
-                        "surface-container": "#171f33",
-                        "surface-container-high": "#222a3d",
-                        "surface-container-highest": "#2d3449",
-                        "on-surface": "#dae2fd",
-                        "on-surface-variant": "#c2c6d6",
-                        "outline": "#8c909f",
-                        "outline-variant": "#424754",
-                        "primary-container": "#4d8eff",
-                        "on-primary-container": "#00285d",
-                        "secondary-container": "#c0c1ff",
-                        "tertiary": "#ffb786",
-                    },
-                    fontFamily: {
-                        sans: ["Inter", "sans-serif"],
-                        mono: ["monospace"],
-                        label: ["Space Grotesk", "sans-serif"],
-                        display: ["'Instrument Serif'", "serif"],
-                    },
-                },
-            },
-        };
-    </script>
+    <script src="assets/tailwind-config.js"></script>
+    <script src="assets/site-header.js"></script>
     <style>
-        :root {
-            --background: 201 100% 13%;
-            --foreground: 0 0% 100%;
-            --muted-foreground: 240 4% 66%;
-            --primary: 0 0% 100%;
-            --primary-foreground: 0 0% 4%;
-            --secondary: 0 0% 10%;
-            --muted: 0 0% 10%;
-            --accent: 0 0% 10%;
-            --border: 0 0% 18%;
-            --input: 0 0% 18%;
-        }
         body {
             background-color: hsl(var(--background));
             color: hsl(var(--foreground));
             font-family: 'Inter', sans-serif;
         }
         .label-text { font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
-        
+
         /* Markdown Styling */
         #content h1 { font-family: 'Instrument Serif', serif; font-size: 3rem; font-weight: 400; line-height: 1.1; margin-bottom: 2rem; color: hsl(var(--foreground)); letter-spacing: -0.02em; }
-        #content h2 { font-family: 'Instrument Serif', serif; font-size: 2.25rem; font-weight: 400; line-height: 1.2; margin-top: 3.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem; color: hsl(var(--foreground)); }
-        #content h3 { font-size: 1.35rem; font-weight: 600; line-height: 1.4; margin-top: 2.5rem; margin-bottom: 1rem; color: #adc6ff; }
-        #content p { margin-bottom: 1.5rem; line-height: 1.8; color: #c2c6d6; font-size: 1.05rem; }
-        #content ul, #content ol { list-style-position: outside; margin-left: 1.5rem; margin-bottom: 1.5rem; color: #c2c6d6; }
+        #content h2 { font-family: 'Instrument Serif', serif; font-size: 2.25rem; font-weight: 400; line-height: 1.2; margin-top: 3.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--hairline); padding-bottom: 0.5rem; color: hsl(var(--foreground)); }
+        #content h3 { font-size: 1.35rem; font-weight: 600; line-height: 1.4; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--heading-accent); }
+        #content p { margin-bottom: 1.5rem; line-height: 1.8; color: var(--on-surface-variant); font-size: 1.05rem; }
+        #content ul, #content ol { list-style-position: outside; margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--on-surface-variant); }
         #content ul { list-style-type: disc; }
         #content ol { list-style-type: decimal; }
         #content li { margin-bottom: 0.75rem; line-height: 1.7; }
-        #content code { font-family: monospace; background-color: rgba(255,255,255,0.05); padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #ffb786; }
-        #content pre { background-color: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; margin: 2.5rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+        #content code { font-family: monospace; background-color: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: var(--tertiary); }
+        #content pre { background-color: var(--pre-bg); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--pre-border); overflow-x: auto; margin: 2.5rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.25); }
         #content pre code { background-color: transparent; padding: 0; color: inherit; font-size: 0.95rem; line-height: 1.6; }
-        #content blockquote { border-left: 4px solid #adc6ff; padding-left: 1.5rem; font-style: italic; color: hsl(var(--foreground)); margin: 2.5rem 0; background: rgba(173, 198, 255, 0.05); padding-top: 1rem; padding-bottom: 1rem; border-radius: 0 0.5rem 0.5rem 0; }
-        #content hr { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 4rem 0; }
+        #content blockquote { border-left: 4px solid var(--heading-accent); padding-left: 1.5rem; font-style: italic; color: hsl(var(--foreground)); margin: 2.5rem 0; background: var(--blockquote-bg); padding-top: 1rem; padding-bottom: 1rem; border-radius: 0 0.5rem 0.5rem 0; }
+        #content hr { border: 0; border-top: 1px solid var(--hairline); margin: 4rem 0; }
         #content strong { color: hsl(var(--foreground)); font-weight: 700; }
-        #content img { border-radius: 0.75rem; margin: 2.5rem auto; display: block; border: 1px solid rgba(255,255,255,0.08); }
+        #content img { border-radius: 0.75rem; margin: 2.5rem auto; display: block; border: 1px solid var(--hairline); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
     <div id="ambient-bg"></div>
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 w-full bg-black/10 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <a href="index.html" style="font-family: 'Instrument Serif', serif;" class="text-3xl tracking-tight text-foreground">
-                    CORNDEVs<sup class="text-xs">®</sup>
-                </a>
-            </div>
-            <div class="flex items-center gap-6">
-                <a href="javascript:void(0)" onclick="window.history.back()" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
-                    <span class="material-symbols-outlined !text-sm">arrow_back</span>
-                    Quay lại
-                </a>
-                <span class="text-white/10">|</span>
-                <a href="index.html" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Về Trang chủ</a>
-            </div>
-        </div>
-    </header>
+    <div id="site-header" data-active="reader"></div>
+    <script>
+        SiteHeader.init({ active: 'reader' });
+    </script>
 
     <div class="flex-grow max-w-4xl mx-auto w-full px-6 py-12 md:py-20">
         <div id="loading" class="flex flex-col items-center justify-center py-20 space-y-4">
@@ -263,6 +198,19 @@
             }
         }
 
+        function syncHljsTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.getElementById('hljs-theme-dark').disabled = !isDark;
+            document.getElementById('hljs-theme-light').disabled = isDark;
+        }
+
+        const applyThemeToggle = window.toggleTheme;
+        window.toggleTheme = function () {
+            applyThemeToggle();
+            syncHljsTheme();
+        };
+
+        syncHljsTheme();
         window.onload = loadMarkdown;
     </script>
 </body>
