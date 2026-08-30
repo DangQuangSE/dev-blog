@@ -5,13 +5,14 @@
   overflow: hidden;
   pointer-events: none;
   background: #0b1326 url('ambient-poster.jpeg') center / cover no-repeat;
+  filter: brightness(1.2) contrast(1.05);
 }
 
 #ambient-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(11, 19, 38, 0.78);
+  background: rgba(11, 19, 38, 0.5);
 }
 
 .reveal-up {
