@@ -1,6 +1,6 @@
 # PTE Platform — Cách Ly Multi-Tenant: 3 Lớp Độc Lập
 
-*Bài 5/5 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
+*Bài 5/12 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
 
 Nhiều tổ chức luyện thi (host/tenant) dùng chung một instance `authoring`. "Chung service" không đồng nghĩa "chung số phận" — ADR-003 tách rõ 3 lớp cách ly độc lập, mỗi lớp giải một loại rủi ro khác nhau, và cố tình **không trộn chúng vào nhau**.
 
@@ -90,4 +90,4 @@ Nguyên tắc chốt: READ được điều tiết bằng PgBouncer pool size (�
 
 ---
 
-*Đã đi hết 4 mảng kỹ thuật nổi bật của PTE Platform: [kiến trúc & ADR](02-kien-truc-adr.md), [mã hóa đáp án](03-ma-hoa-dap-an.md), [event-driven saga](04-event-driven-saga.md), và tenant isolation ở trên. Series sẽ được cập nhật thêm khi có chức năng mới triển khai.*
+*Đã đi hết 4 mảng kiến trúc nền tảng của PTE Platform. Từ bài tiếp theo, series chuyển sang đi theo đúng luồng nghiệp vụ — vai trò cao nhất trước: [Platform Admin & IAM/Auth flow](06-admin-va-iam.md).*

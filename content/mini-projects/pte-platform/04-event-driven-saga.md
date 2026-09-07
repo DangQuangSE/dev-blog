@@ -1,6 +1,6 @@
 # PTE Platform — Event-Driven Saga: Nộp Bài → Chấm Điểm → Publish
 
-*Bài 4/5 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
+*Bài 4/12 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
 
 Nộp bài thi xuyên 3 service (`exam-delivery` → `scoring` → `reporting`) là ứng viên kinh điển cho distributed transaction. ADR-002 chọn không dùng 2PC — thay vào đó là **Transactional Outbox + saga choreography**, mỗi service tự quyết bước của mình khi nhận được event, không có nhạc trưởng trung tâm điều phối.
 
@@ -56,6 +56,43 @@ Ba quyết định thiết kế đáng chú ý ở đây:
 - **Lỗi publish không rollback, mà commit bookkeeping thất bại.** `recordFailure` tăng `publishAttempts`, ghi `lastError`, quarantine nếu vượt `maxPublishAttempts` (mặc định 10) — nhưng không `throw` lại, nên transaction `REQUIRES_NEW` này vẫn commit. Một dòng lỗi không kéo theo rollback của dòng đã publish thành công trước đó trong cùng chu kỳ poll.
 
 Cấu hình mặc định qua `application.yml`, override được per-service: `pte.outbox.poll-interval-ms=2000`, `pte.outbox.batch-size=100`, `pte.outbox.max-publish-attempts=10`, `pte.outbox.confirm-timeout-ms=5000`. `publishAndConfirm` gọi `rabbitTemplate.waitForConfirmsOrDie` — chặn tới khi broker xác nhận nhận message, throw nếu timeout hoặc bị nack, để tầng gọi (`claimAndProcessOne`) xử lý retry/quarantine thay vì âm thầm mất event.
+
+## Phía ghi: mọi `outboxWriter.write(...)` xuyên 11 service đều gọi chung 1 lớp
+
+Xuyên suốt series này, mọi service (`iam`, `authoring`, `scheduling`, `proctor`, `scoring`...) đều có dòng `outboxWriter.write(...)` khi phát sự kiện. Tất cả đi qua đúng 1 lớp base dùng chung trong `pte-common`, y hệt cách `AbstractOutboxRelay` dùng chung phía đọc:
+
+```java
+/**
+ * Shared outbox-writing logic (serialize payload + fill row). A service
+ * subclass supplies its concrete entity + how to persist it. Callers must
+ * invoke write INSIDE the same @Transactional as the business change so
+ * state and event are atomic.
+ */
+public abstract class AbstractOutboxWriter<T extends AbstractOutboxEntry> {
+
+    private final JsonMapper jsonMapper;
+
+    protected abstract T instantiate();
+    protected abstract void persist(T entry);
+
+    public void write(String aggregateType, String aggregateId, String eventType, Object payload, UUID tenantId) {
+        try {
+            T entry = instantiate();
+            entry.setAggregateType(aggregateType);
+            entry.setAggregateId(aggregateId);
+            entry.setEventType(eventType);
+            entry.setPayload(jsonMapper.writeValueAsString(payload));
+            entry.setTenantId(tenantId);
+            entry.setOccurredAt(Instant.now());
+            persist(entry);
+        } catch (JacksonException ex) {
+            throw new IllegalStateException("Failed to serialize outbox payload for " + eventType, ex);
+        }
+    }
+}
+```
+
+Mỗi service chỉ cần khai `instantiate()` (entity outbox riêng của mình, ví dụ `IamOutboxEntry` hay `SchedulingOutboxEntry`) và `persist()` (gọi đúng repository của mình) — phần serialize payload thành JSON, gắn `aggregateType`/`eventType`/`tenantId`/`occurredAt` dùng chung 100% cho toàn hệ thống. Doc comment nhấn mạnh đúng điều kiện bắt buộc đã nói ở đầu bài: `write()` phải được gọi **bên trong cùng `@Transactional`** với thay đổi nghiệp vụ — đây chính là nửa "ghi" của cặp INSERT atomic (answer + outbox row) đã thấy ở phần trên. Một service quên bọc `write()` trong transaction đang mở là vi phạm trực tiếp bất biến outbox pattern, dù code vẫn compile và chạy bình thường trong phần lớn trường hợp — bug loại này chỉ lộ ra khi có lỗi giữa chừng.
 
 ## Host-gated: submit không kéo theo chấm điểm
 

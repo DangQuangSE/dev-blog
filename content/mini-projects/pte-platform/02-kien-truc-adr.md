@@ -1,6 +1,6 @@
 # PTE Platform — Kiến Trúc & 4 ADR
 
-*Bài 2/5 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
+*Bài 2/12 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
 
 Team không chọn microservice vì "trending" hay vì đội đông. Team 4 người + AI-assisted làm lý do Conway's Law (chia service theo tổ chức team) **yếu đi**, không mạnh lên. Lý do đứng vững duy nhất trong ADR-001: **cô lập rủi ro cho critical path**. Một bulk-import chậm hoặc một kết nối WebSocket giám thị bị leak không được phép ăn vào tài nguyên của học viên đang làm bài — và một modular monolith, dù code sạch đến đâu, vẫn dùng chung 1 process/1 connection pool/1 thread pool nên không cắt được ranh giới đó. Chỉ tách deployable mới làm được.
 

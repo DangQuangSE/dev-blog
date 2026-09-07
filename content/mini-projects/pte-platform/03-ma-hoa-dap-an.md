@@ -1,6 +1,6 @@
 # PTE Platform — Mã Hóa Đáp Án STRICT
 
-*Bài 3/5 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
+*Bài 3/12 trong series case study PTE Platform. Trạng thái tại 2026-09-07.*
 
 Với các kỳ thi có giám sát (`answerIntegrityLevel = STRICT` trên attempt đã pin), đáp án không chỉ cần xác thực **ai** gửi (JWT lo việc đó) — nó cần bằng chứng **không bị sửa** trên đường truyền. Đây là chỗ `exam-delivery` dùng một cặp key RSA-2048 **riêng của chính nó**, tách hẳn khỏi key ký JWT của `iam`.
 
@@ -24,6 +24,35 @@ public ApiResponse<AttemptTaskResponse> submitEncryptedAnswer(@PathVariable UUID
 ```
 
 Hai endpoint tồn tại song song thay vì 1 endpoint chung tự nhận diện — service kiểm tra `answerIntegrityLevel` đã pin trên attempt và **từ chối chéo** (gửi plain payload vào endpoint STRICT hoặc ngược lại đều bị lỗi). Payload của route STANDARD là chuỗi thô theo quy ước riêng từng task type (ví dụ `MC_READING_SINGLE` gửi `orderIndex` dạng chuỗi số, `RE_ORDER_PARAGRAPHS` gửi thứ tự các đoạn nối bằng dấu phẩy, audio task gửi `publicId` của file đã upload lên `media` chứ không phải byte âm thanh thô) — route STRICT bọc y hệt payload đó trong lớp mã hóa, không đổi ngữ nghĩa nghiệp vụ.
+
+Việc "route nào áp dụng cho attempt nào" không do client tự chọn — server quyết định dựa trên chính snapshot đã pin lúc bắt đầu:
+
+```java
+@Transactional
+public AttemptTaskResponse submitAnswer(UUID attemptPublicId, SubmitAnswerRequest request, CurrentUser caller) {
+    ExamAttempt attempt = findOwned(attemptPublicId, caller.userId());
+    requireIntegrityLevel(attempt, "STANDARD");
+    return processAnswer(attempt, request.pinnedItemPublicId(), request.payload());
+}
+
+@Transactional
+public AttemptTaskResponse submitEncryptedAnswer(UUID attemptPublicId, EncryptedSubmissionRequest request,
+                                                  CurrentUser caller) {
+    ExamAttempt attempt = findOwned(attemptPublicId, caller.userId());
+    requireIntegrityLevel(attempt, "STRICT");
+    String payload = submissionDecryptionService.decrypt(request, encryptionKeyProvider.getPrivateKey());
+    return processAnswer(attempt, request.pinnedItemPublicId(), payload);
+}
+
+/** Request shape (plain vs. encrypted) is server-decided by the pinned level, never client-chosen. */
+private void requireIntegrityLevel(ExamAttempt attempt, String expectedLevel) {
+    if (!expectedLevel.equals(attempt.getPinnedSnapshot().getAnswerIntegrityLevel())) {
+        throw new AnswerIntegrityLevelMismatchException();
+    }
+}
+```
+
+Doc comment nói thẳng: "server-decided by the pinned level, never client-chosen". Một client cố tình gọi route STANDARD cho attempt đã pin STRICT (để né việc mã hóa) bị chặn ngay ở đây — `answerIntegrityLevel` gắn cứng trên `PinnedExamSnapshot` từ lúc `exam-delivery` pin snapshot, không phải field client gửi kèm mỗi request, nên không có cách nào hạ cấp bảo mật giữa chừng phiên thi.
 
 ## Vì sao tách key mã hóa khỏi key JWT
 

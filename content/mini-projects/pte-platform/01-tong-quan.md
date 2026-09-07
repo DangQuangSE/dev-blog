@@ -1,6 +1,6 @@
 # PTE Platform — Tổng Quan Dự Án
 
-*Nền tảng thi thử PTE Academic đa tenant — kiến trúc 10 microservice + API gateway, team 4 người + AI-assisted. Đây là bài 1/5 trong series case study về dự án.*
+*Nền tảng thi thử PTE Academic đa tenant — kiến trúc 10 microservice + API gateway, team 4 người + AI-assisted. Đây là bài 1/12 trong series case study về dự án.*
 
 > Trạng thái tại 2026-09-07. Team đang chuyển sang giai đoạn kiểm thử runtime — bài viết mô tả kiến trúc và code đã hoàn thiện tại thời điểm này, sẽ cập nhật khi có thay đổi lớn.
 
