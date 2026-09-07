@@ -420,6 +420,43 @@ const BLOG_POSTS = [
         description: "Xây dựng hệ thống phân tán lớn: Service Discovery (Eureka), API Gateway, Config Server, Circuit Breaker (Resilience4j) và Feign Client."
     },
 
+    // === MINI PROJECTS: PTE PLATFORM ===
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[01] Tổng Quan Dự Án",
+        path: "content/mini-projects/pte-platform/01-tong-quan.md",
+        description: "Nền tảng thi thử PTE Academic đa tenant: pain point, 10 microservice + API gateway, tech stack Java 21/Spring Boot 4, và vai trò leader điều phối team 4 người."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[02] Kiến Trúc & ADR",
+        path: "content/mini-projects/pte-platform/02-kien-truc-adr.md",
+        description: "Vì sao chọn microservice không phải vì \"trending\": tóm tắt 4 ADR — boundary theo capability, async saga, tenant isolation, code structure — kèm sơ đồ phụ thuộc service."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[03] Mã Hóa Đáp Án STRICT",
+        path: "content/mini-projects/pte-platform/03-ma-hoa-dap-an.md",
+        description: "Cơ chế mã hóa đáp án hybrid RSA-2048 + AES-256-GCM cho exam mode STRICT, tách biệt hoàn toàn khỏi JWT key, fail-fast khi thiếu key production."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[04] Event-Driven Saga",
+        path: "content/mini-projects/pte-platform/04-event-driven-saga.md",
+        description: "Luồng nộp bài → chấm điểm → publish bằng Transactional Outbox + choreography saga, host-gated scoring, và quyết định đổi từ Kafka sang RabbitMQ giữa chừng."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[05] Cách Ly Multi-Tenant",
+        path: "content/mini-projects/pte-platform/05-tenant-isolation.md",
+        description: "3 lớp cách ly độc lập cho hệ thống multi-tenant: data isolation bằng Postgres RLS, resource isolation chống noisy neighbor, và fault/blast-radius isolation."
+    },
+
     // === MINI PROJECTS: MINI BANK ===
     {
         category: "mini-bank",
