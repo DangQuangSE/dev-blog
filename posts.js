@@ -418,5 +418,49 @@ const BLOG_POSTS = [
         title: "[14] Phase 7 - Microservices: Kiến trúc Microservices với Spring Cloud",
         path: "content/frameworks/springboot/phase-7-microservices/14-spring-cloud-microservices.md",
         description: "Xây dựng hệ thống phân tán lớn: Service Discovery (Eureka), API Gateway, Config Server, Circuit Breaker (Resilience4j) và Feign Client."
+    },
+
+    // === MINI PROJECTS: MINI BANK ===
+    {
+        category: "mini-bank",
+        date: "2026-09-06",
+        title: "[01] Phase 1 — Core Banking & Auth (Week 1–4)",
+        path: "content/mini-projects/mini-bank/phase-1-core-banking-auth.md",
+        description: "Dựng nền móng: user/account CRUD, auth JWT + role-based, và double-entry ledger cho deposit/withdraw/transfer với concurrency an toàn — mọi phase sau đều phụ thuộc vào entity thiết kế ở đây."
+    },
+    {
+        category: "mini-bank",
+        date: "2026-09-06",
+        title: "[02] Phase 2 — Extended Banking Features (Week 5–8)",
+        path: "content/mini-projects/mini-bank/phase-2-extended-banking-features.md",
+        description: "Mở rộng nghiệp vụ: sổ tiết kiệm tính lãi qua scheduled job, standing order tự động, sao kê PDF, và audit log ghi lại hành động nhạy cảm."
+    },
+    {
+        category: "mini-bank",
+        date: "2026-09-06",
+        title: "[03] Phase 3 — Async Processing & Loans (Week 9–12)",
+        path: "content/mini-projects/mini-bank/phase-3-async-processing-loans.md",
+        description: "Xử lý bất đồng bộ với Kafka (transaction event + notification consumer, dead-letter/retry) và module vay: duyệt khoản vay, sinh lịch trả nợ theo công thức amortization, phát hiện quá hạn tự động."
+    },
+    {
+        category: "mini-bank",
+        date: "2026-09-06",
+        title: "[04] Phase 4 — Security & Risk (Week 13–16)",
+        path: "content/mini-projects/mini-bank/phase-4-security-risk.md",
+        description: "Thẻ ảo, fraud rule engine đánh dấu giao dịch nghi ngờ, OTP cho giao dịch lớn, rate limit chống brute-force, và rà soát OWASP toàn diện trước khi bước sang microservices."
+    },
+    {
+        category: "mini-bank",
+        date: "2026-09-06",
+        title: "[05] Phase 5 — Microservices Extraction (Week 17–20)",
+        path: "content/mini-projects/mini-bank/phase-5-microservices-extraction.md",
+        description: "Tách notification-service và statement-service khỏi monolith, thêm API Gateway, service discovery, Resilience4j circuit breaker và distributed tracing — phase rủi ro cao nhất do độ phức tạp hạ tầng tăng mạnh."
+    },
+    {
+        category: "mini-bank",
+        date: "2026-09-06",
+        title: "[06] Phase 6 — Polish, Frontend & Ship (Week 21–24)",
+        path: "content/mini-projects/mini-bank/phase-6-polish-frontend-ship.md",
+        description: "Chốt chất lượng backend, dựng frontend Next.js tối thiểu để demo toàn bộ luồng, dockerize + CI, và chuẩn bị tư liệu case-study cho CV/phỏng vấn."
     }
 ];

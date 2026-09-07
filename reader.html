@@ -43,6 +43,19 @@
         #content hr { border: 0; border-top: 1px solid var(--hairline); margin: 4rem 0; }
         #content strong { color: hsl(var(--foreground)); font-weight: 700; }
         #content img { border-radius: 0.75rem; margin: 2.5rem auto; display: block; border: 1px solid var(--hairline); }
+
+        /* Table of contents */
+        #toc-sidebar { font-size: 0.8rem; max-height: calc(100vh - 8rem); overflow-y: auto; }
+        #toc-sidebar::-webkit-scrollbar { width: 4px; }
+        #toc-sidebar::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+        #toc-sidebar .toc-label { font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.65rem; color: var(--on-surface-variant); margin-bottom: 0.75rem; }
+        #toc-sidebar ul { list-style: none; margin: 0; padding: 0; }
+        #toc-sidebar ul ul { margin-top: 0.25rem; margin-bottom: 0.5rem; padding-left: 1rem; border-left: 1px solid var(--hairline); }
+        #toc-sidebar li { margin-bottom: 0.5rem; }
+        #toc-sidebar a { display: flex; gap: 0.4rem; color: var(--on-surface-variant); line-height: 1.4; text-decoration: none; transition: color 0.15s ease; }
+        #toc-sidebar a:hover { color: hsl(var(--foreground)); }
+        #toc-sidebar a.toc-active { color: var(--heading-accent); font-weight: 600; }
+        #toc-sidebar .toc-num { font-family: 'Space Grotesk', sans-serif; flex-shrink: 0; opacity: 0.7; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
@@ -54,13 +67,13 @@
         SiteHeader.init({ active: 'reader' });
     </script>
 
-    <div class="flex-grow max-w-4xl mx-auto w-full px-6 py-12 md:py-20">
+    <div class="flex-grow max-w-6xl mx-auto w-full px-6 py-12 md:py-20">
         <div id="loading" class="flex flex-col items-center justify-center py-20 space-y-4">
             <div class="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
             <p class="text-on-surface-variant animate-pulse">Đang tải nội dung bài viết...</p>
         </div>
 
-        <article id="post-container" class="hidden">
+        <article id="post-container" class="hidden max-w-4xl md:max-w-none mx-auto">
             <header class="mb-12" id="post-header">
                 <div class="flex items-center gap-4 mb-4">
                     <span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-sm border border-primary/30 uppercase tracking-widest">Bài viết</span>
@@ -68,9 +81,12 @@
                 </div>
             </header>
 
-            <div id="content" class="md:text-lg"></div>
-            
-            <footer class="mt-20 pt-10 border-t border-outline-variant flex items-center justify-between">
+            <div id="post-body" class="md:flex md:gap-12 items-start">
+                <aside id="toc-sidebar" class="hidden md:block md:w-64 md:shrink-0 md:sticky md:top-24"></aside>
+                <div id="content" class="md:text-lg flex-1 min-w-0 max-w-4xl"></div>
+            </div>
+
+            <footer class="mt-20 pt-10 border-t border-outline-variant flex items-center justify-between max-w-4xl">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center font-bold text-xl">C</div>
                     <div>
@@ -83,6 +99,150 @@
     </div>
 
     <script>
+        let currentTocObserver = null;
+
+        // Chuyển tiêu đề tiếng Việt có dấu thành slug URL-safe, giữ nghĩa đọc được
+        // (vd "Mục tiêu phase" -> "muc-tieu-phase"), không strip trắng thành chuỗi rỗng.
+        function slugify(text) {
+            let s = (text || '').normalize('NFD').replace(/[̀-ͯ]/g, '');
+            s = s.replace(/đ/g, 'd').replace(/Đ/g, 'D');
+            s = s.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+            return s;
+        }
+
+        function toRoman(num) {
+            const map = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+            let result = '';
+            for (const [val, sym] of map) { while (num >= val) { result += sym; num -= val; } }
+            return result;
+        }
+
+        function toLetter(num) {
+            let s = '';
+            while (num > 0) {
+                const rem = (num - 1) % 26;
+                s = String.fromCharCode(97 + rem) + s;
+                num = Math.floor((num - 1) / 26);
+            }
+            return s;
+        }
+
+        // Sinh mục lục từ chính heading (h2/h3/h4) của #content: gán id ổn định (chống trùng),
+        // đánh số phân cấp I/II/III -> 1/2/3 -> a/b/c, render sidebar, và gắn scroll-spy.
+        // Phải chạy SAU marked.parse() (heading đã tồn tại trong DOM) và TRƯỚC groupContentBlocks()
+        // (hàm đó làm contentEl.innerHTML = '' rồi build lại — id gán sau bước đó sẽ không tồn tại
+        // trên đúng phần tử được groupContentBlocks di chuyển vào wrapper).
+        function buildTableOfContents(contentEl, sidebarEl) {
+            if (currentTocObserver) { currentTocObserver.disconnect(); currentTocObserver = null; }
+
+            const headings = Array.from(contentEl.querySelectorAll('h2, h3, h4'));
+            if (headings.length === 0) {
+                // Ẩn cứng bằng inline style (không đụng class 'hidden'/'md:block' của Tailwind) —
+                // bài không có heading phải ẩn sidebar ở MỌI breakpoint, kể cả desktop.
+                sidebarEl.style.display = 'none';
+                sidebarEl.innerHTML = '';
+                return;
+            }
+            // Không đụng vào class 'hidden md:block' có sẵn trong HTML tĩnh — đó chính là cơ chế
+            // responsive mong muốn (ẩn dưới md, hiện từ md trở lên). classList.remove('hidden') ở đây
+            // từng là bug: nó xóa luôn class ẩn-trên-mobile, khiến sidebar hiện cả ở viewport điện thoại.
+            sidebarEl.style.display = '';
+
+            // Heading nông nhất hiện diện trong bài (thường là h2, nhưng bài chỉ có h3/h4 vẫn xử lý được)
+            // trở thành cấp "top" đánh số La Mã — không giả định h2 luôn tồn tại.
+            const levelsPresent = new Set(headings.map((h) => parseInt(h.tagName.substring(1), 10)));
+            const topLevel = Math.min(...levelsPresent);
+
+            const usedSlugs = new Set();
+            headings.forEach((el, idx) => {
+                let base = slugify(el.textContent);
+                if (!base) base = 'heading-' + (idx + 1);
+                let slug = base;
+                let suffix = 2;
+                while (usedSlugs.has(slug)) { slug = base + '-' + suffix; suffix++; }
+                usedSlugs.add(slug);
+                el.id = slug;
+            });
+
+            const tree = [];
+            let topCount = 0, midCount = 0, leafCount = 0;
+            let currentTop = null, currentMid = null;
+
+            headings.forEach((el) => {
+                const level = parseInt(el.tagName.substring(1), 10);
+                const depth = level - topLevel; // 0 = top (roman), 1 = mid (arabic), 2 = leaf (letter)
+
+                if (depth === 0) {
+                    topCount++; midCount = 0; leafCount = 0;
+                    const node = { el, label: toRoman(topCount), text: el.textContent, children: [] };
+                    tree.push(node);
+                    currentTop = node; currentMid = null;
+                } else if (depth === 1) {
+                    midCount++; leafCount = 0;
+                    const node = { el, label: String(midCount), text: el.textContent, children: [] };
+                    (currentTop ? currentTop.children : tree).push(node);
+                    currentMid = node;
+                } else {
+                    leafCount++;
+                    const node = { el, label: toLetter(leafCount), text: el.textContent, children: [] };
+                    const parent = currentMid || currentTop;
+                    (parent ? parent.children : tree).push(node);
+                }
+            });
+
+            function renderList(nodes) {
+                const ul = document.createElement('ul');
+                nodes.forEach((node) => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = '#' + node.el.id;
+                    a.dataset.tocTarget = node.el.id;
+                    // Nhiều bài trong site tự đánh số thủ công trong heading gốc — dạng số
+                    // ("### 1. Kiểm tra môi trường...", mini-bank) hoặc dạng chữ ("### a) Hạn chế...",
+                    // springboot/09-jwt-oauth2-security.md) — gây trùng với số tự sinh của TOC
+                    // (vd "1.1." hoặc "1.a)"). Chỉ bỏ khi hiển thị trong mục lục; heading gốc trong
+                    // bài (#content h2/h3/h4) giữ nguyên không đổi.
+                    const displayText = node.text.replace(/^(\d+|[a-zA-Z])[.)]\s+/, '');
+                    a.innerHTML = '<span class="toc-num">' + node.label + '.</span><span>' + displayText + '</span>';
+                    a.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        node.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
+                    li.appendChild(a);
+                    if (node.children.length) li.appendChild(renderList(node.children));
+                    ul.appendChild(li);
+                });
+                return ul;
+            }
+
+            sidebarEl.innerHTML = '';
+            const label = document.createElement('div');
+            label.className = 'toc-label';
+            label.textContent = 'Mục lục';
+            sidebarEl.appendChild(label);
+            sidebarEl.appendChild(renderList(tree));
+
+            // Scroll-spy: 1 mục active tại 1 thời điểm. rootMargin -40% trên/dưới thu hẹp vùng
+            // "đang đọc" về dải giữa màn hình (tương đương -40vh khi root là viewport — IntersectionObserver
+            // CHỈ chấp nhận đơn vị px/%, dùng "vh" sẽ ném SyntaxError ngay khi khởi tạo observer).
+            // Chỉ cập nhật active khi có heading MỚI đi vào dải đó, giữ nguyên active cũ khi thoát ra
+            // (tránh mất highlight lúc cuộn nhanh giữa 2 heading).
+            let activeLink = null;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const link = sidebarEl.querySelector('a[data-toc-target="' + entry.target.id + '"]');
+                    if (!link) return;
+                    if (activeLink) activeLink.classList.remove('toc-active');
+                    link.classList.add('toc-active');
+                    activeLink = link;
+                });
+            }, { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+
+            headings.forEach((h) => observer.observe(h));
+            currentTocObserver = observer;
+        }
+
         function groupContentBlocks(contentEl) {
             const STANDALONE = ['h1', 'pre', 'blockquote', 'img'];
             const children = Array.from(contentEl.children);
@@ -165,6 +325,10 @@
 
                 contentEl.innerHTML = marked.parse(markdown);
 
+                // Sinh mục lục (gán id + đánh số + scroll-spy) TRƯỚC groupContentBlocks() —
+                // xem ghi chú ở buildTableOfContents() để biết lý do thứ tự này bắt buộc.
+                buildTableOfContents(contentEl, document.getElementById('toc-sidebar'));
+
                 // Nhóm nội dung thành từng block lớn để reveal-up (không animate từng <p> lẻ)
                 groupContentBlocks(contentEl);
                 initAmbientReveal(contentEl);
@@ -185,6 +349,7 @@
 
             } catch (error) {
                 console.error('Error loading post:', error);
+                if (currentTocObserver) { currentTocObserver.disconnect(); currentTocObserver = null; }
                 contentEl.innerHTML = `
                     <div class="text-center py-20">
                         <h1 class="text-3xl font-bold mb-4 text-primary">Lỗi tải bài viết</h1>
