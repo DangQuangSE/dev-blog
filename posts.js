@@ -420,6 +420,106 @@ const BLOG_POSTS = [
         description: "Xây dựng hệ thống phân tán lớn: Service Discovery (Eureka), API Gateway, Config Server, Circuit Breaker (Resilience4j) và Feign Client."
     },
 
+    // === MINI PROJECTS: PTE PLATFORM ===
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[01] Tổng Quan Dự Án",
+        path: "content/mini-projects/pte-platform/01-tong-quan.md",
+        description: "Nền tảng thi thử PTE Academic đa tenant: pain point, 10 microservice + API gateway, tech stack Java 21/Spring Boot 4, và vai trò leader điều phối team 4 người."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[02] Kiến Trúc & ADR",
+        path: "content/mini-projects/pte-platform/02-kien-truc-adr.md",
+        description: "Vì sao chọn microservice không phải vì \"trending\": tóm tắt 4 ADR — boundary theo capability, async saga, tenant isolation, code structure — kèm sơ đồ phụ thuộc service."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[03] Mã Hóa Đáp Án STRICT",
+        path: "content/mini-projects/pte-platform/03-ma-hoa-dap-an.md",
+        description: "Cơ chế mã hóa đáp án hybrid RSA-2048 + AES-256-GCM cho exam mode STRICT, tách biệt hoàn toàn khỏi JWT key, fail-fast khi thiếu key production."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[04] Event-Driven Saga",
+        path: "content/mini-projects/pte-platform/04-event-driven-saga.md",
+        description: "Luồng nộp bài → chấm điểm → publish bằng Transactional Outbox + choreography saga, host-gated scoring, và quyết định đổi từ Kafka sang RabbitMQ giữa chừng."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-07",
+        title: "[05] Cách Ly Multi-Tenant",
+        path: "content/mini-projects/pte-platform/05-tenant-isolation.md",
+        description: "3 lớp cách ly độc lập cho hệ thống multi-tenant: data isolation bằng Postgres RLS, resource isolation chống noisy neighbor, và fault/blast-radius isolation."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[06] Nền Tảng: Platform Admin & IAM/Auth Flow",
+        path: "content/mini-projects/pte-platform/06-admin-va-iam.md",
+        description: "Platform Admin onboard tenant, cấp tài khoản host, và luồng login → JWT RS256 với claim tenant_id/roles mà mọi service verify local qua JWKS."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[07] Host Soạn Đề: Authoring & 22 Task Type",
+        path: "content/mini-projects/pte-platform/07-authoring-va-task-type.md",
+        description: "Validation category-driven theo flag enum thay vì 22 rule viết tay, và cơ chế publish snapshot bất biến bằng deep-copy để tách khỏi nội dung gốc."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[08] Host Tổ Chức Thi: Scheduling & Enrollment",
+        path: "content/mini-projects/pte-platform/08-scheduling-va-enrollment.md",
+        description: "Cơ chế composition full-mock vs practice-subset, entitlement check — cú gọi sync duy nhất vào exam-delivery — và 2 command host-facing chấm/publish."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[09] Học Viên Làm Bài: Attempt State Machine",
+        path: "content/mini-projects/pte-platform/09-attempt-state-machine.md",
+        description: "Lõi exam-delivery: pin snapshot bằng đúng 1 cú gọi sync, auto-expire task hết giờ, resume idempotent, và play audio idempotent theo playRequestId."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[10] Giám Thị Giám Sát: Proctor & Timer Enforcement",
+        path: "content/mini-projects/pte-platform/10-proctor-va-timer.md",
+        description: "Timer server-authoritative tính deadline tại task-start, WebSocket/STOMP làm kênh chỉ huy chính, và audit log tamper-evident bằng hash chain SHA-256."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[11] Học Viên Nộp Bài: Media Upload",
+        path: "content/mini-projects/pte-platform/11-media-upload.md",
+        description: "Presigned URL để client upload thẳng lên MinIO, trích xuất duration từ WAV header fail-fast, và 2 MinioClient tách biệt cho presign vs gọi thật."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[12] Host Duyệt Điểm & Báo Cáo: Scoring Review & Reporting",
+        path: "content/mini-projects/pte-platform/12-scoring-review-va-reporting.md",
+        description: "Cổng human-review, AI scoring worker thật với retry/backoff/DLQ, công thức điểm 10-90, và cơ chế build read model an toàn với lỗi transaction Postgres."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[13] Notification: Fan-Out Khi Có Sự Kiện",
+        path: "content/mini-projects/pte-platform/13-notification.md",
+        description: "Directory email cục bộ xây từ event thay vì gọi sync sang iam, fan-out 1 sự kiện thành N thông báo, và cùng pattern dispatcher/worker/DLQ với AI scoring."
+    },
+    {
+        category: "pte-platform",
+        date: "2026-09-08",
+        title: "[14] Internal Service-to-Service API",
+        path: "content/mini-projects/pte-platform/14-internal-service-api.md",
+        description: "Xác thực bằng shared key so sánh constant-time, filter chain riêng cho /internal/**, keyset cursor export, và ranh giới bootstrap toàn-tenant tách biệt."
+    },
+
     // === MINI PROJECTS: MINI BANK ===
     {
         category: "mini-bank",
