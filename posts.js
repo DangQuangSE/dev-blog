@@ -519,6 +519,13 @@ const BLOG_POSTS = [
         path: "content/mini-projects/pte-platform/14-internal-service-api.md",
         description: "Xác thực bằng shared key so sánh constant-time, filter chain riêng cho /internal/**, keyset cursor export, và ranh giới bootstrap toàn-tenant tách biệt."
     },
+    {
+        category: "pte-platform",
+        date: "2026-09-09",
+        title: "[15] Tái Kiến Trúc Cell-Based",
+        path: "content/mini-projects/pte-platform/15-cell-based-architecture.md",
+        description: "10 service nhưng chỉ 1 vùng sập: 1 Postgres chung và 6 cạnh đồng bộ ở cửa vào phòng thi. Đề xuất cắt 4 cell theo hồ sơ tài nguyên và lộ trình triển khai 5 bước."
+    },
 
     // === MINI PROJECTS: MINI BANK ===
     {

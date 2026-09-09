@@ -4,6 +4,7 @@
     { key: 'home', href: 'index.html', label: 'Trang chủ' },
     { key: 'knowledge', href: 'knowledge.html', label: 'Kiến thức' },
     { key: 'projects', href: 'projects.html', label: 'Dự án' },
+    { key: 'exercises', href: 'exercises.html', label: 'Bài tập' },
     { key: 'posts', href: 'posts.html?category=all', label: 'Bài viết' },
   ];
 
