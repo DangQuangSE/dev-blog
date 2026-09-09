@@ -497,13 +497,6 @@ Tách compute theo actor thì được; tách data theo actor thì không. Đó 
 
 ---
 
-## Điểm chưa chốt
-
-- **Tải WebSocket thật của `proctor`** chưa đo. Nếu chưa có tải thật, gộp LIVE vào EXAM trước, tách ra sau khi có số liệu — đỡ ngay một server.
-- **Tính năng "xem trạng thái phòng thi"** chưa build. Cần quyết định read model có làm ngay ở bước 2 hay để sau.
-- **Ngân sách node thật** quyết định 2 hay 4 cell.
-
----
 
 ## Bài học rút ra
 
