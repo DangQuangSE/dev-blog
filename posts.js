@@ -526,6 +526,13 @@ const BLOG_POSTS = [
         path: "content/mini-projects/pte-platform/15-cell-based-architecture.md",
         description: "10 service nhưng chỉ 1 vùng sập: 1 Postgres chung và 6 cạnh đồng bộ ở cửa vào phòng thi. Đề xuất cắt 4 cell theo hồ sơ tài nguyên và lộ trình triển khai 5 bước."
     },
+    {
+        category: "pte-platform",
+        date: "2026-09-09",
+        title: "[16] Deploy Free Tier: 11 Container JVM Trên Một VM",
+        path: "content/mini-projects/pte-platform/16-free-tier-deployment.md",
+        description: "Vì sao 11 deployable loại bỏ mọi PaaS free tier, phương án Oracle A1 24GB với 10 bước triển khai, và chỗ môi trường demo cố tình phá vỡ cell isolation của bài 15."
+    },
 
     // === MINI PROJECTS: MINI BANK ===
     {
