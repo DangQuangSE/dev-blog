@@ -124,11 +124,11 @@ test('Phase 3: Heading-Level Audit Verification', async (t) => {
   // Find all markdown files
   const mdFiles = findMarkdownFiles(contentDir).sort();
 
-  await t.test('exactly 65 markdown files exist in content/', () => {
+  await t.test('exactly 96 markdown files exist in content/', () => {
     assert.strictEqual(
       mdFiles.length,
-      65,
-      `Expected 65 markdown files in content/, found ${mdFiles.length}`
+      96,
+      `Expected 96 markdown files in content/, found ${mdFiles.length}`
     );
   });
 
