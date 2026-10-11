@@ -185,6 +185,113 @@ const BLOG_POSTS = [
         description: "Làm chủ kỹ thuật bảng băm để tối ưu tốc độ tìm kiếm từ O(n) xuống O(1). Giải quyết các bài toán LeetCode Two Sum và Contains Duplicate."
     },
 
+    // === JAVA CORE 21 ===
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "Java Core 21 — Phần 1: Java Fundamentals",
+        path: "content/programming-languages/java-core-21/01-java-fundamentals.md",
+        description: "Nền tảng Java SE 21 từ JDK, JRE, JVM, bytecode và JIT đến biến, kiểu dữ liệu, toán tử, control flow và array theo hướng học để làm backend."
+    },
+
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[00] Java Core 21 — Full Roadmap",
+        path: "content/programming-languages/java-core-21/00-roadmap.md",
+        description: "Roadmap Java Core 21 gồm 14 phần và 40 chủ đề, từ Java Fundamentals đến OOP, Collections, Concurrency, JVM, Modern Java 21 và testing."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[02] Java Core 21 — Object-Oriented Programming",
+        path: "content/programming-languages/java-core-21/02-object-oriented-programming.md",
+        description: "Nội dung Java OOP về Classes, Objects, constructors, object references, pass-by-value và phần mở đầu Encapsulation; các chương tiếp theo sẽ bổ sung dần."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[03] Java Core 21 — Java Core APIs",
+        path: "content/programming-languages/java-core-21/03-java-core-apis.md",
+        description: "Chương String Handling chuyên sâu: immutability, String Pool, StringBuilder, StringBuffer, Unicode, UTF-8/UTF-16, String API, Text Blocks, regex và các tình huống xử lý chuỗi trong backend."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[04] Java Core 21 — Exception Handling",
+        path: "content/programming-languages/java-core-21/04-exception-handling.md",
+        description: "Exception Handling chuyên sâu: exception flow, Throwable hierarchy, checked và unchecked exceptions, try/catch/finally, multi-catch, throw và throws."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[05] Java Core 21 — Collections Framework",
+        path: "content/programming-languages/java-core-21/05-collections-framework.md",
+        description: "Java Collections Framework chuyên sâu: hierarchy, List, Set, Queue, Deque, Generics, Iterator, Comparable, Comparator và ArrayList internals."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[06] Java Core 21 — Generics",
+        path: "content/programming-languages/java-core-21/06-generics.md",
+        description: "Java Generics chuyên sâu: generic classes/methods, bounds, invariance, wildcards, PECS, type erasure, raw types, heap pollution và generic API cho backend."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[07] Java Core 21 — Functional Programming",
+        path: "content/programming-languages/java-core-21/07-functional-programming.md",
+        description: "Functional Programming chuyên sâu: Lambda, functional interfaces, method references, Stream API, Collectors, parallel streams, Optional và ứng dụng backend."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[08] Java Core 21 — Java I/O & File Handling",
+        path: "content/programming-languages/java-core-21/08-java-io-file-handling.md",
+        description: "Java I/O & File Handling chuyên sâu: byte/character streams, buffering, Charset, NIO.2 Files/Path, channels, WatchService, serialization và file security."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[09] Java Core 21 — Multithreading & Concurrency",
+        path: "content/programming-languages/java-core-21/09-multithreading-concurrency.md",
+        description: "Multithreading & Concurrency chuyên sâu: platform threads, interruption, Java Memory Model, synchronized, volatile, locks, atomics, ExecutorService, CompletableFuture và concurrent collections."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[10] Java Core 21 — JVM Internals & Memory Management",
+        path: "content/programming-languages/java-core-21/10-jvm-internals-memory-management.md",
+        description: "JVM Internals và Garbage Collection chuyên sâu: bytecode, class loading, runtime data areas, JIT, G1, ZGC, memory leaks và JVM diagnostics."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[11] Java Core 21 — Modern Java 21 Features",
+        path: "content/programming-languages/java-core-21/11-modern-java-21-features.md",
+        description: "Modern Java 21 chuyên sâu: var, Text Blocks, switch expressions, records, sealed types, pattern matching, JPMS, virtual threads và Preview Features."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[12] Java Core 21 — Reflection, Annotations & Core APIs",
+        path: "content/programming-languages/java-core-21/12-reflection-annotations-core-apis.md",
+        description: "Reflection, Annotations, Networking, HttpClient, ServiceLoader, MethodHandle, Modules, Process APIs và Java security basics chuyên sâu."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[13] Java Core 21 — Coding Practices & Testing",
+        path: "content/programming-languages/java-core-21/13-coding-practices-testing.md",
+        description: "Clean Code và Java Backend practices: naming, SOLID, immutability, refactoring, JUnit 5, Mockito, integration testing, Spring Boot testing, Testcontainers, debugging, coverage và Maven/Gradle."
+    },
+    {
+        category: "java-core-21",
+        date: "2026-10-10",
+        title: "[14] Java Core 21 — Interview Preparation & Practical Review",
+        path: "content/programming-languages/java-core-21/14-learning-priority.md",
+        description: "Ôn tập phỏng vấn Java Core 21: câu hỏi lý thuyết, coding challenges, tình huống Backend, mock interview và roadmap tự đánh giá cho Junior/Junior+."
+    },
     // === JAVA ===
     {
         category: "java",
